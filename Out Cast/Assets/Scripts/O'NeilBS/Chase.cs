@@ -33,7 +33,15 @@ public class Chase : MonoBehaviour
         var speed = 4f;
 
         transform.LookAt(target.transform);
+        if((transform.position - target.transform.position).magnitude > 2f)
+        {
         transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        else
+        {
+            return;
+        }
+
 
     }
 
