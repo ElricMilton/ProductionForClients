@@ -5,8 +5,9 @@ using SensorToolkit;
 
 public class Chase : MonoBehaviour
 {
-    public RangeSensor sensor;
-    public Animator animator;
+   // public RangeSensor sensor;
+    public TriggerSensor fov;
+    //public Animator animator;
     public GameObject post;
 
     public float chaseSpeed = 4f;
@@ -16,7 +17,7 @@ public class Chase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var deteced = sensor.GetNearest();
+        var deteced = fov.GetNearest();
         if (deteced != null)
         {
             chase(deteced);
