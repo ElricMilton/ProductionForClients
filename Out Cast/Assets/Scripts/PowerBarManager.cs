@@ -10,6 +10,7 @@ public class PowerBarManager : MonoBehaviour
     public float maxPower = 100;
     public float currentPower;
     public float powerIncreaseSpeed;
+    [SerializeField] GameEvent powerDischarge;
 
     public void SetMaxPower(float power)
     {
@@ -80,8 +81,7 @@ public class PowerBarManager : MonoBehaviour
 
     void OnBurst()
     {
-        print("power bar has overflown!");
-        //play burst animation, trigger enemy detection etc
+        powerDischarge?.Invoke();
     }
 
     void GainPowerOverTime()
