@@ -6,8 +6,10 @@ public class PartolState : MonoBehaviour
 {
 
     public float speed;
-    private float waitTime;
+    public float waitTime;
     public float startWaitTime;
+    public float timerDecrease = 1f;
+    public GameObject patrolPoint;
 
     public Transform moveSpot;
     public float minX;
@@ -15,17 +17,36 @@ public class PartolState : MonoBehaviour
     public float minY;
     public float maxY;
 
-    // Start is called before the first frame update
     void Start()
     {
-        waitTime = startWaitTime;
+        Instantiate(patrolPoint);
 
-        moveSpot.position = new Vector3(Random)
+        waitTime = startWaitTime;
+        //set inital position to move too 
+        //moveSpot.position = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+        moveSpot.position = new Vector3(Random.Range(minX, maxX), patrolPoint.transform.position.y, Random.Range(minY, maxY));
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        //moves to new position 
+        transform.position = Vector3.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, moveSpot.position) < 0.2f)
+        {
+            //when wait time is up create new postion to move too
+            if(waitTime <= 0)
+            {
+                //moveSpot.position = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+                moveSpot.position = new Vector3(Random.Range(minX, maxX), patrolPoint.transform.position.y, Random.Range(minY, maxY));
+                waitTime = startWaitTime;
+            }
+            //decreses wait time in seconds
+            else
+            {
+                waitTime -= (timerDecrease * Time.deltaTime);
+            }
+        }
     }
 }
