@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PowerBarManager : MonoBehaviour
 {
     //Power bar info:
-    public Slider slider;
-    public Image fill;
-    public Gradient colourOverLife; //Set fixed colour gradient
-    public float maxPower = 100;
-    public float currentPower;
-    public float powerIncreaseSpeed;
+    [SerializeField] Slider slider;
+    [SerializeField] Image fill;
+    [SerializeField] Gradient colourOverLife; //Set fixed colour gradient
+    [SerializeField] float maxPower = 100;
+    [SerializeField] float currentPower;
+    [SerializeField] float powerIncreaseSpeed;
     [SerializeField] GameEvent powerDischarge;
+    [SerializeField] float howManySecondsToDischarge;
+    [SerializeField] BoolVariable isDischargingMagicBool;
 
     public void SetMaxPower(float power)
     {
@@ -82,10 +86,20 @@ public class PowerBarManager : MonoBehaviour
     void OnBurst()
     {
         powerDischarge?.Invoke();
+        StartCoroutine(DischargingMagic(howManySecondsToDischarge));
     }
 
     void GainPowerOverTime()
     {
         IncreasePower(powerIncreaseSpeed);
+    }
+
+    public IEnumerator DischargingMagic(float dischargeForXSeconds)
+    {
+        isDischargingMagicBool.Value = true;
+        print("player is discharging magic!");
+        yield return new WaitForSeconds(dischargeForXSeconds);
+        isDischargingMagicBool.Value = false;
+        print("player is no longer discharging magic");
     }
 }

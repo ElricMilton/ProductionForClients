@@ -287,6 +287,8 @@ MonoBehaviour:
   currentPower: 0
   powerIncreaseSpeed: 10
   powerDischarge: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
+  howManySecondsToDischarge: 3
+  isDischargingMagicBool: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
 --- !u!114 &176111030
 MonoBehaviour:
   m_ObjectHideFlags: 0
