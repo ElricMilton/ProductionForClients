@@ -128,9 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fd15f62eeb749489ec90b578aad182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
-  rotationSpeed: 200
-  stopDistance: 0.75
+  movementSpeedMin: 0.8
+  movementSpeedMax: 2.2
+  rotationSpeedMin: 125
+  rotationSpeedMax: 250
+  stopDistanceMin: 0.75
+  stopDistanceMax: 5
   destination: {x: 0, y: 0, z: 0}
   reachedDestination: 0
 --- !u!95 &4597290219963716278

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class PedestrianNavigationController : MonoBehaviour
 {
-    public float movementSpeed;
-    public float rotationSpeed;
-    public float stopDistance;
+    private float movementSpeed;
+    public float movementSpeedMin;
+    public float movementSpeedMax;
+    private float rotationSpeed;
+    public float rotationSpeedMin;
+    public float rotationSpeedMax;
+    private float stopDistance;
+    public float stopDistanceMin;
+    public float stopDistanceMax;
     public Vector3 destination;
     public bool reachedDestination;
 
@@ -18,6 +24,14 @@ public class PedestrianNavigationController : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+
+    }
+
+    private void Awake()
+    {
+        movementSpeed = Random.Range(movementSpeedMin, movementSpeedMax);
+        rotationSpeed = Random.Range(rotationSpeedMin, rotationSpeedMax);
+        stopDistance = Random.Range(stopDistanceMin, stopDistanceMax);
     }
 
     void Update()
