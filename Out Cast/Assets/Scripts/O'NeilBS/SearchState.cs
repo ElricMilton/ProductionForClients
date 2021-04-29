@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PartolState : MonoBehaviour
+public class SearchState : MonoBehaviour
 {
 
     public float speed;
