@@ -51,7 +51,7 @@ public class GaurdBehaviour : MonoBehaviour
             isPatroling = false;
 
         }
-        if (isChasing == true & deteced == null & isSearching == true)
+        if (isSearching == true & deteced == null )
         {
 
             if (searchTime <= 0f)

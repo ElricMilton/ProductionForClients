@@ -17,7 +17,7 @@ public class SearchState : MonoBehaviour
     public float minY;
     public float maxY;
 
-    void Start()
+    void Awake()
     {
         Instantiate(patrolPoint);
         waitTime = startWaitTime;
@@ -31,14 +31,23 @@ public class SearchState : MonoBehaviour
 
     void Update()
     {
-        TurnToLook();
+        //if(_canWalk == false)
+        //{
+        //TurnToLook();
+        //}
+        //if(_canWalk == true)
+        //{
+        //Move();
+        //}
         Move();
+        TurnToLook();
+
     }
 
-    bool _canWalk = false;
+    public bool _canWalk = false;
     void Move()
     {
-        if (_canWalk)
+        if (_canWalk == true)
         {
             //moves to new position 
             transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
@@ -72,6 +81,7 @@ public class SearchState : MonoBehaviour
     {
         Vector3 direction = moveSpot - transform.position;
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, toRotation.y, 0, 0), _lerpDuration * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, _lerpDuration * Time.deltaTime);
 
         if (Quaternion.Angle(transform.rotation, toRotation) == _angleLimit)
