@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 6978835875852062391}
   - component: {fileID: 6978835875852062385}
   - component: {fileID: 6978835875852062390}
-  - component: {fileID: 176111030}
   m_Layer: 5
   m_Name: PowerBar
   m_TagString: Untagged
@@ -289,31 +288,3 @@ MonoBehaviour:
   powerDischarge: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
   howManySecondsToDischarge: 3
   isDischargingMagicBool: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
---- !u!114 &176111030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6978835875852062388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf353115cdbbf2545ae61d3438a95a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WallSpell : MonoBehaviour
 {
+    [SerializeField] Camera cam;
     [SerializeField] GameObject wallSpawnMarker;
-    [SerializeField] float wallSpawnRange;
-    Camera cam;
-    [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask layerMask;
+    [SerializeField] float heightOffset;
 
     private void Awake()
     {
@@ -16,30 +18,20 @@ public class WallSpell : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            DoRaycast();
-        }
+        RaycastOnClick();
     }
-    private void OnMouseDown()
-    {
-        Ray ray = cam.ScreenPointToRay(new Vector3(cam.scaledPixelWidth / 2, cam.scaledPixelHeight / 2, 0));
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, groundLayer))
-        {
-            if (hitInfo.distance <= wallSpawnRange)
+    private void RaycastOnClick()
+    {
+        if (Input.GetMouseButton(0))
+        {           
+            //Ray ray = cam.ScreenPointToRay(new Vector3(cam.scaledPixelWidth / 2, cam.scaledPixelHeight / 2));
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, layerMask) )
             {
-                wallSpawnMarker.SetActive(true);
-                wallSpawnMarker.transform.position = hitInfo.point;
-            }
-            else if (hitInfo.distance > wallSpawnRange)
-            {
-                wallSpawnMarker.SetActive(false);
+                wallSpawnMarker.transform.position = new Vector3(hit.point.x, hit.point.y+heightOffset, hit.point.z);
             }
         }
-    }
-    void DoRaycast()
-    {
-
     }
 }
