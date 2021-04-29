@@ -13,7 +13,7 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] float currentPower;
     [SerializeField] float powerIncreaseSpeed;
     [SerializeField] GameEvent powerDischarge;
-    [SerializeField] float howManySecondsToDischarge;
+    [SerializeField] float howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
 
     public void SetMaxPower(float power)
@@ -86,7 +86,7 @@ public class PowerBarManager : MonoBehaviour
     void OnBurst()
     {
         powerDischarge?.Invoke();
-        StartCoroutine(DischargingMagic(howManySecondsToDischarge));
+        StartCoroutine(DischargingMagic(howManySecondsToDischargeFor));
     }
 
     void GainPowerOverTime()

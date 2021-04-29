@@ -31,6 +31,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &254203090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211075960204280900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf353115cdbbf2545ae61d3438a95a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: aaba0d2c29bed634fae29e0ee41e8db9, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3211075960204280902}
+        m_TargetAssemblyTypeName: PowerBarManager, Assembly-CSharp
+        m_MethodName: SpendPower
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 250
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3211075960378139803
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerBar
       objectReference: {fileID: 0}
+    - target: {fileID: 6978835875852062390, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: powerIncreaseSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6978835875852062391, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -331,8 +363,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 176111030, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+--- !u!1 &3211075960204280900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6978835875852062388, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+  m_PrefabInstance: {fileID: 5497143426756365040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3211075960204280903 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6978835875852062391, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
   m_PrefabInstance: {fileID: 5497143426756365040}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3211075960204280902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6978835875852062390, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+  m_PrefabInstance: {fileID: 5497143426756365040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211075960204280900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdbc434578c3064386d09bebaee6415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
