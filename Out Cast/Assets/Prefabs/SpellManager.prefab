@@ -84,6 +84,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   maxRange: 17
+  wallSpellEvent: {fileID: 11400000, guid: aaba0d2c29bed634fae29e0ee41e8db9, type: 2}
+  wallSpellCooldown: 5
 --- !u!1 &8812025229864385462
 GameObject:
   m_ObjectHideFlags: 0
