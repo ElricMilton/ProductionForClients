@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class WallSpell : MonoBehaviour
 {
-    [SerializeField] Camera cam;
     [SerializeField] GameObject wall;
     [SerializeField] float wallOffset = 0.5f;
     [SerializeField] GameObject wallSpawnMarker;
-    float markerOffset = .1f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] float maxRange;
-    Vector3 spawnPos;
-    bool spawnable = false;
     [SerializeField] GameEvent wallSpellEvent;
     [SerializeField] float wallSpellCooldown;
+    float markerOffset = .1f;
+    Vector3 spawnPos;
+    bool spawnable = false;
     bool waitingForCooldown = false;
     Animator wallAnim;
     ParticleSystem particle;
+    Camera cam;
 
     private void Awake()
     {
