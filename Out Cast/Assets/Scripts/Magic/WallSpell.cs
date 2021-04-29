@@ -10,6 +10,7 @@ public class WallSpell : MonoBehaviour
     [SerializeField] GameObject wallSpawnMarker;
     [SerializeField] LayerMask layerMask;
     [SerializeField] float heightOffset;
+    [SerializeField] float maxRange;
 
     private void Awake()
     {
@@ -28,10 +29,26 @@ public class WallSpell : MonoBehaviour
             //Ray ray = cam.ScreenPointToRay(new Vector3(cam.scaledPixelWidth / 2, cam.scaledPixelHeight / 2));
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, layerMask) )
+            if (Physics.Raycast(ray, out RaycastHit hit, maxRange+10, layerMask))
             {
-                wallSpawnMarker.transform.position = new Vector3(hit.point.x, hit.point.y+heightOffset, hit.point.z);
+                if (hit.distance <= maxRange)
+                {
+                    wallSpawnMarker.SetActive(true);
+                    wallSpawnMarker.transform.position = new Vector3(hit.point.x, hit.point.y + heightOffset, hit.point.z);
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        PlaceWall();
+                    }
+                }
+                else if (hit.distance > maxRange)
+                {
+                    wallSpawnMarker.SetActive(false);
+                }
             }
         }
+    }
+    void PlaceWall()
+    {
+
     }
 }

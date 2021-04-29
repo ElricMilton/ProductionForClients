@@ -25,6 +25,7 @@ public class GaurdBehaviour : MonoBehaviour
         isPatroling = true;
         isSearching = false;
         isChasing = false;
+        searchTime = startSearchTime;
     }
 
     // Update is called once per frame
@@ -40,15 +41,18 @@ public class GaurdBehaviour : MonoBehaviour
             isSearching = false;
             isPatroling = false;
         }
-        if(isChasing == true & deteced == null)
+        if(isChasing == true & deteced == null & isSearching == false)
         {
-            searchTime = startSearchTime;
             enemy.GetComponent<ChaseState>().enabled = false;
             enemy.GetComponent<SearchState>().enabled = true;
             enemy.GetComponent<PatrolState>().enabled = false;
             isChasing = false;
             isSearching = true;
             isPatroling = false;
+
+        }
+        if (isChasing == true & deteced == null & isSearching == true)
+        {
 
             if (searchTime <= 0f)
             {
@@ -62,10 +66,29 @@ public class GaurdBehaviour : MonoBehaviour
             }
             else
             {
-                searchTime -= 1f * Time.deltaTime;
+                searchTime -= (1f * Time.deltaTime);
             }
-
         }
 
     }
+
+
+   /* void searching()
+    {
+
+        if (searchTime <= 0f)
+        {
+            searchTime = startSearchTime;
+            enemy.GetComponent<ChaseState>().enabled = false;
+            enemy.GetComponent<SearchState>().enabled = false;
+            enemy.GetComponent<PatrolState>().enabled = true;
+            isChasing = false;
+            isSearching = false;
+            isPatroling = true;
+        }
+        else
+        {
+            searchTime -= (1f * Time.deltaTime);
+        }
+    }*/
 }
