@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class WallSpell : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    [SerializeField] GameObject wall;
+    [SerializeField] float wallOffset = 0.5f;
     [SerializeField] GameObject wallSpawnMarker;
+    float markerOffset = .1f;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] float heightOffset;
     [SerializeField] float maxRange;
+    Vector3 spawnPos;
+    bool spawnable = false;
 
     private void Awake()
     {
@@ -20,6 +24,14 @@ public class WallSpell : MonoBehaviour
     private void Update()
     {
         RaycastOnClick();
+
+        if (Input.GetMouseButtonUp(0) && spawnable)
+        {
+            wallSpawnMarker.SetActive(false);
+            wall.SetActive(true);
+            wall.transform.position = spawnPos;
+            spawnable = false;
+        }
     }
 
     private void RaycastOnClick()
@@ -33,22 +45,23 @@ public class WallSpell : MonoBehaviour
             {
                 if (hit.distance <= maxRange)
                 {
+                    spawnable = true;
                     wallSpawnMarker.SetActive(true);
-                    wallSpawnMarker.transform.position = new Vector3(hit.point.x, hit.point.y + heightOffset, hit.point.z);
-                    if (Input.GetMouseButtonUp(0))
-                    {
-                        PlaceWall();
-                    }
+                    wallSpawnMarker.transform.position = new Vector3(hit.point.x, hit.point.y + markerOffset, hit.point.z);
+                    spawnPos = new Vector3(hit.point.x, hit.point.y + wallOffset, hit.point.z);
                 }
                 else if (hit.distance > maxRange)
                 {
                     wallSpawnMarker.SetActive(false);
+                    spawnable = false;
                 }
             }
         }
     }
+
+
     void PlaceWall()
     {
-
+        wall.transform.position = spawnPos;
     }
 }
