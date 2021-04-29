@@ -18,10 +18,14 @@ public class WallSpell : MonoBehaviour
     [SerializeField] GameEvent wallSpellEvent;
     [SerializeField] float wallSpellCooldown;
     bool waitingForCooldown = false;
+    Animator wallAnim;
+    ParticleSystem particle;
 
     private void Awake()
     {
         cam = Camera.main;
+        wallAnim = wall.GetComponentInChildren<Animator>();
+        particle = wall.GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
@@ -64,6 +68,8 @@ public class WallSpell : MonoBehaviour
         wallSpawnMarker.SetActive(false);
         wall.SetActive(true);
         wall.transform.position = spawnPos;
+        particle.Play();
+        wallAnim.Play("WallRising");
         spawnable = false;
         wallSpellEvent.Invoke();
         StartCoroutine(Cooldown());
