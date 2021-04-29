@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   wall: {fileID: 8812025230588358984}
-  wallOffset: 0.5
+  wallOffset: 0
   wallSpawnMarker: {fileID: 8812025229918909684}
   layerMask:
     serializedVersion: 2
