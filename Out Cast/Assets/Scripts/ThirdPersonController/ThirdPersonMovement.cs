@@ -25,11 +25,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
     bool mouseVisible;
 
+    float currentAnimationSpeed;
+    Animator animator;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         mouseVisible = false;
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -77,7 +81,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                currentAnimationSpeed = 1;
             }
+            else
+            {
+                currentAnimationSpeed = 0;
+            }
+            animator.SetFloat("Move", Mathf.Lerp(animator.GetFloat("Move"), currentAnimationSpeed, 5 * Time.deltaTime));
         }
     }
 
