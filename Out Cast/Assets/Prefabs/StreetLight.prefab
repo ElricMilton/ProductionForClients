@@ -16,7 +16,7 @@ GameObject:
   m_Name: StreetLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3994534035370292810
@@ -113,7 +113,7 @@ GameObject:
   m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3994534035748347053
@@ -206,7 +206,7 @@ GameObject:
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3994534036153508837
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UID: 9331931
+  UID: -1016448266
   color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   intensity: 10
   shadowSpread: 0.5

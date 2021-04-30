@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PedestrianNavigationController : MonoBehaviour
 {
-    private float movementSpeed;
+    
     public float movementSpeedMin;
     public float movementSpeedMax;
-    private float rotationSpeed;
+    
     public float rotationSpeedMin;
     public float rotationSpeedMax;
-    private float stopDistance;
+    
     public float stopDistanceMin;
     public float stopDistanceMax;
+
     public Vector3 destination;
     public bool reachedDestination;
+
+    private float movementSpeed;
+    private float rotationSpeed;
+    private float stopDistance;
 
     private Animator _animator;
     private Vector3 lastPosition;

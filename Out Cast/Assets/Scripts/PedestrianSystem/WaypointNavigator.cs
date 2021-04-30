@@ -21,6 +21,7 @@ public class WaypointNavigator : MonoBehaviour
 
     void Update()
     {
+
         if (controller.reachedDestination)
         {
             bool shouldBranch = false;
@@ -29,7 +30,7 @@ public class WaypointNavigator : MonoBehaviour
             {
                 shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.branchRatio ? true : false;
             }
-
+            
             if (shouldBranch)
             {
                 currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint.branches.Count - 1)];
