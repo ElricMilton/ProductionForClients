@@ -7,10 +7,12 @@ using Unity.Collections;
 public class PedestrianWander : MonoBehaviour
 {
     public float wanderRadius;
+    public float wanderRadiusMin;
+    public float wanderRadiusMax;
     [Space(10)]
     public float wanderTimer;
-    public float wanderTimerMax;
     public float wanderTimerMin;
+    public float wanderTimerMax;
     [Space(10)]
     public float speed;
     [Space(10)]
@@ -24,6 +26,7 @@ public class PedestrianWander : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         wanderTimer = Random.Range(wanderTimerMin, wanderTimerMax);
+        wanderRadius = Random.Range(wanderRadiusMin, wanderRadiusMax);
         speed = Random.Range(speedMin, speedMax);
         agent.speed = speed;
         timer = 0;
@@ -57,6 +60,7 @@ public class PedestrianWander : MonoBehaviour
 
     void WanderRandomize()
     {
+        wanderRadius = Random.Range(wanderRadiusMin, wanderRadiusMax);
         wanderTimer = Random.Range(wanderTimerMin, wanderTimerMax);
     }
 }
