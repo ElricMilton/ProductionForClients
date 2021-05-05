@@ -36,15 +36,16 @@ public class GuardBehaviourV2 : MonoBehaviour
     
     public enum GameStates
     {
-        t1,
-        t2
+        patroling,
+        chasing,
+        searching,
+        returningToPost,
 
     }
     GameStates gameState;
-    // Start is called before the first frame update
     void Start()
     {
-        gameState = GameStates.t1;
+        gameState = GameStates.patroling;
         waitTime = startWaitTime;
         searchTime = startSearchTime;
     }
@@ -54,19 +55,40 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         switch (gameState)
         {
-            case GameStates.t1:
-                Debug.Log("We are in state 1!");
+            case GameStates.patroling:
+                Debug.Log("We are in state patroling!");
                 break;
-            case GameStates.t2:
-                Debug.Log("We are in state 2!");
+            case GameStates.chasing:
+                Debug.Log("We are in state chasing!");
+                Chasing();
+                break;
+            case GameStates.searching:
+                Debug.Log("We are in state searching!");
+                TurnToLook();
+                break;
+            case GameStates.returningToPost:
+                Debug.Log("We are in state returningToPost!");
+                ReturnToPost();
                 break;
             default:
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            gameState = GameStates.t2;
+            gameState = GameStates.patroling;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameState = GameStates.chasing;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gameState = GameStates.searching;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            gameState = GameStates.returningToPost;
         }
 
 
@@ -74,7 +96,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         var player = fov.GetNearest();
         if (player != null & ps.isChaseable == true)
         {
-            isChasing = true;
+            gameState = GameStates.chasing;
         }
 
         if (isChasing)
@@ -113,15 +135,18 @@ public class GuardBehaviourV2 : MonoBehaviour
 
 
 
-        if (isReturningToPost == true)
-        {
-            ReturnToPost();
-
-        }
-
     }
 
+    void Chasing()
+    {
 
+        var deteced = fov.GetNearest();
+        if (deteced != null)
+        {
+            chase(deteced);
+        }
+    }
+   
     void chase(GameObject target)
     {
         var deteced = fov.GetNearest();
@@ -170,6 +195,11 @@ public class GuardBehaviourV2 : MonoBehaviour
             isReturningToPost = false;
             return;
         }
+
+    }
+
+    void IsSearching()
+    {
 
     }
 
