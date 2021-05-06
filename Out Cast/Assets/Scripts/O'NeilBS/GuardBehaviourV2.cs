@@ -8,7 +8,8 @@ public class GuardBehaviourV2 : MonoBehaviour
 {
 
     public BoolVariable chaseSatus;
-    public Animator guardAnimation;
+    public Animator guardStateMachineAnimator;
+    public Animator movementAnimator;
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
 
@@ -94,7 +95,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             searchTime = startSearchTime;
             gameState = GameStates.chasing;
-            guardAnimation.SetBool("IsSearching", false);
+            guardStateMachineAnimator.SetBool("IsSearching", false);
         }
 
         if (gameState == GameStates.chasing & player == null)
@@ -103,21 +104,21 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
 
 
-
+        movementAnimator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     void Chasing()
     {
-        guardAnimation.enabled = false;
-        guardAnimation.SetBool("IsSearching", false);
+        guardStateMachineAnimator.enabled = false;
+        guardStateMachineAnimator.SetBool("IsSearching", false);
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
-            chase(deteced);
+            Chase(deteced);
         }
     }
    
-    void chase(GameObject target)
+    void Chase(GameObject target)
     {
         playerPos.playerLastPos = target.transform.position;
         transform.LookAt(target.transform.position);
@@ -170,14 +171,14 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         if (searchTime >= 0)
         {
-            guardAnimation.enabled = true;
-            guardAnimation.SetBool("IsSearching", true);
+            guardStateMachineAnimator.enabled = true;
+            guardStateMachineAnimator.SetBool("IsSearching", true);
             searchTime -= (timerDecrease * Time.deltaTime);
         }
         else
         {
-            guardAnimation.enabled = false;
-            guardAnimation.SetBool("IsSearching", false);
+            guardStateMachineAnimator.enabled = false;
+            guardStateMachineAnimator.SetBool("IsSearching", false);
             gameState = GameStates.returningToPost;
             searchTime = startSearchTime;
         }
