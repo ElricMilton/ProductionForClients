@@ -31,6 +31,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120812487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211075960204280900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf353115cdbbf2545ae61d3438a95a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 308310228214847208}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3211075960378139803
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +232,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3211075960378139799}
     m_Modifications:
+    - target: {fileID: 4756588670569328534, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.5429413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
     - target: {fileID: 6978835874775880051, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -215,6 +267,10 @@ PrefabInstance:
     - target: {fileID: 6978835875852062388, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
       propertyPath: m_Name
       value: PowerBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978835875852062390, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: howManySecondsToDischargeFor
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6978835875852062391, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,10 +356,24 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8316767104281764092, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+--- !u!1 &3211075960204280900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6978835875852062388, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+  m_PrefabInstance: {fileID: 5497143426756365040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3211075960204280903 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6978835875852062391, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
+  m_PrefabInstance: {fileID: 5497143426756365040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &308310228214847208 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5192246122373078040, guid: 6a636c411d5f8c048a44b4a33cbd0db4, type: 3}
   m_PrefabInstance: {fileID: 5497143426756365040}
   m_PrefabAsset: {fileID: 0}

@@ -86,8 +86,8 @@ public class PowerBarManager : MonoBehaviour
 
     void OnBurst()
     {
-        powerDischarge?.Invoke();
         uiDischargeFX.Play();
+        powerDischarge?.Invoke();
         StartCoroutine(DischargingMagic(howManySecondsToDischargeFor));
     }
 
@@ -98,9 +98,11 @@ public class PowerBarManager : MonoBehaviour
 
     public IEnumerator DischargingMagic(float dischargeForXSeconds)
     {
+        uiDischargeFX.gameObject.SetActive(true);
         isDischargingMagicBool.Value = true;
         print("player is discharging magic!");
         yield return new WaitForSeconds(dischargeForXSeconds);
+        uiDischargeFX.gameObject.SetActive(false);
         isDischargingMagicBool.Value = false;
         print("player is no longer discharging magic");
     }
