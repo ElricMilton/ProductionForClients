@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShrinkSpell : MonoBehaviour
 {
     [SerializeField] float cooldown = 3;
+    [SerializeField] GameEvent shrinkSpellEvent;
     Animator anim;
 
     bool castable = true;
@@ -78,6 +79,7 @@ public class ShrinkSpell : MonoBehaviour
     IEnumerator ShrinkTime()
     {
         yield return new WaitForSeconds(0.45f);
+        shrinkSpellEvent.Invoke();
         shrinking = false;
     }
 
