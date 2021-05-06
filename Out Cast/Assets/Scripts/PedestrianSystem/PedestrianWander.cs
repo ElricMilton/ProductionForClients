@@ -22,6 +22,8 @@ public class PedestrianWander : MonoBehaviour
     private NavMeshAgent agent;
     public float timer;
 
+    public Animator movementAnimator;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,6 +45,7 @@ public class PedestrianWander : MonoBehaviour
             WanderRandomize();
             timer = wanderTimer;
         }
+        movementAnimator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)

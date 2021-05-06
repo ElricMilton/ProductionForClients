@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class PedestrianNavigationController : MonoBehaviour
 {
@@ -25,11 +27,12 @@ public class PedestrianNavigationController : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 velocity;
 
-
+    private NavMeshAgent navAgent;
+   // private Animator movementAnimator;
     private void Start()
     {
         _animator = GetComponent<Animator>();
-
+        //movementAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Awake()
@@ -67,8 +70,9 @@ public class PedestrianNavigationController : MonoBehaviour
             var fwdDotProduct = Vector3.Dot(transform.forward, velocity);
             var rightDotProduct = Vector3.Dot(transform.right, velocity);
 
-            _animator.SetFloat("Horizontal", rightDotProduct);
-            _animator.SetFloat("Forward", fwdDotProduct);
+            //_animator.SetFloat("Horizontal", rightDotProduct);
+            //_animator.SetFloat("Forward", fwdDotProduct);
+           // movementAnimator.SetFloat("Move", navAgent.velocity.magnitude);
 
         }
         else
