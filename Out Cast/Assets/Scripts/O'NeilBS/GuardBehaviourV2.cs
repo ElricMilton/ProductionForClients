@@ -5,12 +5,9 @@ using SensorToolkit;
 
 public class GuardBehaviourV2 : MonoBehaviour
 {
-    //Guard States
-    public bool isPatroling;
-    public bool isReturningToPost;
-    public bool isSearching;
-    public bool isChasing;
+
     public PlayerStatus ps;
+    public Animator guardAnimation;
 
     // public RangeSensor sensor;
     public TriggerSensor fov;
@@ -50,7 +47,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         searchTime = startSearchTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (gameState)
@@ -64,7 +60,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
             case GameStates.searching:
                 Debug.Log("We are in state searching!");
-                TurnToLook();
+                IsSearching();
                 break;
             case GameStates.returningToPost:
                 Debug.Log("We are in state returningToPost!");
@@ -97,40 +93,12 @@ public class GuardBehaviourV2 : MonoBehaviour
         if (player != null & ps.isChaseable == true)
         {
             gameState = GameStates.chasing;
+            guardAnimation.SetBool("IsSearching", false);
         }
 
-        if (isChasing)
+        if (gameState == GameStates.chasing & player == null)
         {
-            var deteced = fov.GetNearest();
-            if (deteced != null)
-            {
-                chase(deteced);
-            }
-            if(isChasing == true & deteced == null & isSearching == false)
-            {
-
-                Instantiate(patrolPoint);
-                moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
-                isSearching = true;
-            }
-        }
-
-        if (isSearching)
-        {
-            isChasing = false;
-            if (searchTime >0)
-            {
-                Move();
-                TurnToLook();
-                searchTime -= (timerDecrease * Time.deltaTime);
-            }
-            else
-            {
-                searchTime = startSearchTime;
-                isSearching = false;
-                isReturningToPost = true;
-            }
-
+            gameState = GameStates.searching;
         }
 
 
@@ -149,32 +117,18 @@ public class GuardBehaviourV2 : MonoBehaviour
    
     void chase(GameObject target)
     {
-        var deteced = fov.GetNearest();
-        if (deteced != null)
+        guardAnimation.SetLookAtPosition(target.transform.position);
+        //transform.LookAt(target.transform.position);
+        if ((transform.position - target.transform.position).magnitude > 2f)
         {
-            transform.LookAt(target.transform);
-            if ((transform.position - target.transform.position).magnitude > 2f)
-            {
-                transform.position += transform.forward * speed * Time.deltaTime;
-            }
-            else
-            {
-                return;
-            }
-
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
-        //var speed = 4f;
+        else
+        {
+            return;
+        }
 
-        //transform.LookAt(target.transform);
-        //if ((transform.position - target.transform.position).magnitude > 2f)
-        //{
-        //    transform.position += transform.forward * speed * Time.deltaTime;
-        //}
-        //else
-        //{
-        //    return;
-        //}
-
+        
 
     }
 
@@ -188,19 +142,21 @@ public class GuardBehaviourV2 : MonoBehaviour
             transform.LookAt(post.transform, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
-        else
-        {
-            isChasing = false;
-            isSearching = false;
-            isReturningToPost = false;
-            return;
-        }
 
     }
 
     void IsSearching()
     {
-
+        if (searchTime >= 0)
+        {
+            guardAnimation.SetBool("IsSearching", true);
+            searchTime -= (timerDecrease * Time.deltaTime);
+        }
+        else
+        {
+            guardAnimation.SetBool("IsSearching", false);
+            gameState = GameStates.returningToPost;
+        }
     }
 
 
