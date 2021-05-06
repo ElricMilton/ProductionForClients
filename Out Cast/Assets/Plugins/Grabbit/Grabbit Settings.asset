@@ -1091,7 +1091,7 @@ MonoBehaviour:
   tagSelected: Untagged
   AlignStrength: 1
   ExtraDragForRotationMode: 100
-  GravityStrength: {x: 0, y: -9.802159, z: -0.0000011685086}
+  GravityStrength: {x: 0, y: -16.367655, z: -0.0000019511767}
   LimitBodyVelocityInGravityMode: 0
   SetGravityInDirectionOfMouse: 0
   PausePositionReajustment: 1

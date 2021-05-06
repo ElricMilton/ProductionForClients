@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using SensorToolkit;
 
 public class GuardBehaviourV2 : MonoBehaviour
@@ -9,6 +10,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     public BoolVariable chaseSatus;
     public Animator guardAnimation;
     public PlayerStatus playerPos;
+    public NavMeshAgent agent;
 
     // public RangeSensor sensor;
     public TriggerSensor fov;
@@ -106,6 +108,8 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void Chasing()
     {
+        guardAnimation.enabled = false;
+        guardAnimation.SetBool("IsSearching", false);
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
@@ -119,7 +123,8 @@ public class GuardBehaviourV2 : MonoBehaviour
         transform.LookAt(target.transform.position);
         if ((transform.position - target.transform.position).magnitude > 2f)
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.position += transform.forward * speed * Time.deltaTime;
+            agent.SetDestination(target.transform.position);
         }
         else
         {
@@ -132,10 +137,11 @@ public class GuardBehaviourV2 : MonoBehaviour
 
         if ((transform.position - post.transform.position).magnitude > 2f)
         {
-            var speed = 4f;
+            //var speed = 4f;
 
-            transform.LookAt(post.transform, Vector3.up);
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.LookAt(post.transform, Vector3.up);
+            agent.SetDestination(post.transform.position);
+            //transform.position += transform.forward * speed * Time.deltaTime;
         }
         else
         {
