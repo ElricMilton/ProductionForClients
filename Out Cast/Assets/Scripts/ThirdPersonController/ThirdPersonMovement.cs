@@ -9,6 +9,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] Transform camera;
 
     [SerializeField] float speed = 6f;
+    //[SerializeField] float crouchSpeed = 4f;
+    float currentSpeed;
     [SerializeField] float gravity = -9.81f;
     //[SerializeField] float jumpHeight = 3f;
 
@@ -26,14 +28,17 @@ public class ThirdPersonMovement : MonoBehaviour
     bool mouseVisible;
 
     float currentAnimationSpeed;
-    Animator animator;
+    [SerializeField] Animator animator;
+    [SerializeField] Animator scaleAnimator;
+    //bool crouched = false;
 
     private void Start()
     {
+        currentSpeed = speed;
         Cursor.lockState = CursorLockMode.Locked;
         mouseVisible = false;
         controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -52,6 +57,21 @@ public class ThirdPersonMovement : MonoBehaviour
                 mouseVisible = false;
             }
         }
+
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    scaleAnimator.Play("Shrink");
+
+        //    //crouched = true;
+        //    //currentSpeed = crouchSpeed;
+        //}
+        //if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    scaleAnimator.Play("Grow");
+
+        //    //crouched = false;
+        //    //currentSpeed = speed;
+        //}
 
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -80,13 +100,21 @@ public class ThirdPersonMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
                 currentAnimationSpeed = .8f;
             }
             else
             {
                 currentAnimationSpeed = 0;
             }
+            //if (crouched)
+            //{
+            //    animator.Play("Crouch");
+            //}
+            //else if (!crouched)
+            //{
+            //    animator.Play("Walking");
+            //}
             animator.SetFloat("Move", Mathf.Lerp(animator.GetFloat("Move"), currentAnimationSpeed, 5 * Time.deltaTime));
         }
     }
