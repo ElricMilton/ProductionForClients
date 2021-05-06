@@ -6,8 +6,9 @@ using SensorToolkit;
 public class GuardBehaviourV2 : MonoBehaviour
 {
 
-    public PlayerStatus ps;
+    public BoolVariable chaseSatus;
     public Animator guardAnimation;
+    public PlayerStatus playerPos;
 
     // public RangeSensor sensor;
     public TriggerSensor fov;
@@ -16,8 +17,6 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     //for searching state
     public float speed;
-    public float waitTime;
-    public float startWaitTime;
     public float timerDecrease = 1f;
     public GameObject patrolPoint;
 
@@ -43,7 +42,6 @@ public class GuardBehaviourV2 : MonoBehaviour
     void Start()
     {
         gameState = GameStates.patroling;
-        waitTime = startWaitTime;
         searchTime = startSearchTime;
     }
 
@@ -90,8 +88,9 @@ public class GuardBehaviourV2 : MonoBehaviour
 
 
         var player = fov.GetNearest();
-        if (player != null & ps.isChaseable == true)
+        if (player != null & chaseSatus.Value == true)
         {
+            searchTime = startSearchTime;
             gameState = GameStates.chasing;
             guardAnimation.SetBool("IsSearching", false);
         }
@@ -107,7 +106,6 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void Chasing()
     {
-
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
@@ -117,8 +115,8 @@ public class GuardBehaviourV2 : MonoBehaviour
    
     void chase(GameObject target)
     {
-        guardAnimation.SetLookAtPosition(target.transform.position);
-        //transform.LookAt(target.transform.position);
+        playerPos.playerLastPos = target.transform.position;
+        transform.LookAt(target.transform.position);
         if ((transform.position - target.transform.position).magnitude > 2f)
         {
             transform.position += transform.forward * speed * Time.deltaTime;
@@ -127,9 +125,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             return;
         }
-
-        
-
     }
 
     void ReturnToPost()
@@ -142,69 +137,92 @@ public class GuardBehaviourV2 : MonoBehaviour
             transform.LookAt(post.transform, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
+        else
+        {
+            gameState = GameStates.patroling;
+        }
 
     }
 
     void IsSearching()
     {
+        if ((transform.position - playerPos.playerLastPos).magnitude > 2f)
+        {
+            var speed = 4f;
+
+            transform.LookAt(playerPos.playerLastPos, Vector3.up);
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
+        else
+        {
+            Search();
+        }
+
+    }
+
+    void Search()
+    {
         if (searchTime >= 0)
         {
+            guardAnimation.enabled = true;
             guardAnimation.SetBool("IsSearching", true);
             searchTime -= (timerDecrease * Time.deltaTime);
         }
         else
         {
+            guardAnimation.enabled = false;
             guardAnimation.SetBool("IsSearching", false);
             gameState = GameStates.returningToPost;
+            searchTime = startSearchTime;
         }
     }
 
 
-    public bool _canWalk = false;
-    void Move()
-    {
-        if (_canWalk == true)
-        {
-            //moves to new position 
-            transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
-            _canWalk = false;
-        }
+    //public bool _canWalk = false;
+    //void Move()
+    //{
+    //    if (_canWalk == true)
+    //    {
+    //        //moves to new position 
+    //        transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
+    //        _canWalk = false;
+    //    }
 
-        if (Vector3.Distance(transform.position, moveSpot) < 0.2f)
-        {
-            //when wait time is up create new postion to move too
-            if (waitTime <= 0)
-            {
-                moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
-                waitTime = startWaitTime;
-            }
-            //decreses wait time in seconds
-            else
-            {
-                waitTime -= (timerDecrease * Time.deltaTime);
-            }
-        }
+    //    if (Vector3.Distance(transform.position, moveSpot) < 0.2f)
+    //    {
+    //        //when wait time is up create new postion to move too
+    //        if (waitTime <= 0)
+    //        {
+    //            moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+    //            waitTime = startWaitTime;
+    //        }
+    //        //decreses wait time in seconds
+    //        else
+    //        {
+    //            waitTime -= (timerDecrease * Time.deltaTime);
+    //        }
+    //    }
 
-        //if (transform.position == moveSpot)
-        //{
-        //    moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
-        //}
-    }
+    //    //if (transform.position == moveSpot)
+    //    //{
+    //    //    moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+    //    //}
+    //}
 
-    [SerializeField] float _lerpDuration = 3f;
-    [SerializeField] float _angleLimit = 0f;
-    void TurnToLook()
-    {
-        Vector3 direction = moveSpot - transform.position;
-        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, toRotation.y, 0, 0), _lerpDuration * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, _lerpDuration * Time.deltaTime);
+    //[SerializeField] float _lerpDuration = 3f;
+    //[SerializeField] float _angleLimit = 0f;
+    //void TurnToLook()
+    //{
+    //    Vector3 direction = moveSpot - transform.position;
+    //    Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+    //    //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, toRotation.y, 0, 0), _lerpDuration * Time.deltaTime);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, _lerpDuration * Time.deltaTime);
 
-        if (Quaternion.Angle(transform.rotation, toRotation) == _angleLimit)
-        {
-            _canWalk = true;
-        }
-    }
+    //    if (Quaternion.Angle(transform.rotation, toRotation) == _angleLimit)
+    //    {
+    //        _canWalk = true;
+    //    }
+    //}
 
 
 }
