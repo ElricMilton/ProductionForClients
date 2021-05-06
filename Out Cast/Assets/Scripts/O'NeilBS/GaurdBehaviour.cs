@@ -6,7 +6,6 @@ using SensorToolkit;
 public class GaurdBehaviour : MonoBehaviour
 {
     public GameObject enemy;
-    public PlayerStatus ps;
     public GameObject player;
     public TriggerSensor fov;
 
@@ -32,10 +31,10 @@ public class GaurdBehaviour : MonoBehaviour
     void Update()
     {
         var deteced = fov.GetNearest();
-        if (deteced != null & ps.isChaseable == true)
+        //if (deteced != null & ps.isChaseable == true)
         {
             enemy.GetComponent<ChaseState>().enabled = true;
-            enemy.GetComponent<SearchState>().enabled = false;
+            //enemy.GetComponent<SearchState>().enabled = false;
             enemy.GetComponent<PatrolState>().enabled = false;
             isChasing = true;
             isSearching = false;
@@ -44,7 +43,7 @@ public class GaurdBehaviour : MonoBehaviour
         if(isChasing == true & deteced == null & isSearching == false)
         {
             enemy.GetComponent<ChaseState>().enabled = false;
-            enemy.GetComponent<SearchState>().enabled = true;
+            //enemy.GetComponent<SearchState>().enabled = true;
             enemy.GetComponent<PatrolState>().enabled = false;
             isChasing = false;
             isSearching = true;
@@ -58,7 +57,7 @@ public class GaurdBehaviour : MonoBehaviour
             {
                 searchTime = startSearchTime;
                 enemy.GetComponent<ChaseState>().enabled = false;
-                enemy.GetComponent<SearchState>().enabled = false;
+                //enemy.GetComponent<SearchState>().enabled = false;
                 enemy.GetComponent<PatrolState>().enabled = true;
                 isChasing = false;
                 isSearching = false;

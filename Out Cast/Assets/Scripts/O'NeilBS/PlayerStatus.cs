@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerStatus", menuName = "PlayerStatus", order = 51)]
 public class PlayerStatus : ScriptableObject
 {
-    public bool isChaseable;
+    public Vector3 playerLastPos;
 }
