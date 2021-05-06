@@ -5399,7 +5399,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628685903094}
-  m_LocalRotation: {x: 0.025492731, y: 0.9077703, z: 0.055767875, w: -0.41496184}
+  m_LocalRotation: {x: 0.025492733, y: 0.9077702, z: 0.055767883, w: -0.41496184}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5476,8 +5476,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628898938297}
-  m_LocalRotation: {x: 0.21407218, y: -0.6242469, z: 0.18341354, w: 0.72859347}
-  m_LocalPosition: {x: 7.932217, y: 8.635345, z: -1.2386333}
+  m_LocalRotation: {x: 0.044752415, y: 0.90419716, z: 0.09790037, w: -0.41332838}
+  m_LocalPosition: {x: 6.80601, y: 2.26, z: 5.888823}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 595267435}
@@ -6039,8 +6039,8 @@ MonoBehaviour:
   camera: {fileID: 5145613628898938298}
   speed: 6
   gravity: -9.81
-  animator: {fileID: 0}
-  scaleAnimator: {fileID: 0}
+  animator: {fileID: 5549187216332050382}
+  scaleAnimator: {fileID: 1096993576257185238}
 --- !u!54 &1551719529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6148,7 +6148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613630130886931}
-  m_LocalRotation: {x: 0.02835026, y: 0.9076642, z: 0.06214049, w: -0.41410223}
+  m_LocalRotation: {x: 0.028351316, y: 0.90765715, z: 0.062140018, w: -0.41411766}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6332,5 +6332,10 @@ PrefabInstance:
 --- !u!4 &1096993576248085036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400026, guid: 897b34267f422c1499700402763d096e, type: 3}
+  m_PrefabInstance: {fileID: 1096993576247693494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1096993576257185238 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 897b34267f422c1499700402763d096e, type: 3}
   m_PrefabInstance: {fileID: 1096993576247693494}
   m_PrefabAsset: {fileID: 0}

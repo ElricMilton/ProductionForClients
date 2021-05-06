@@ -15,6 +15,7 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] GameEvent powerDischarge;
     [SerializeField] float howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
+    [SerializeField] ParticleSystem uiDischargeFX;
 
     public void SetMaxPower(float power)
     {
@@ -86,6 +87,7 @@ public class PowerBarManager : MonoBehaviour
     void OnBurst()
     {
         powerDischarge?.Invoke();
+        uiDischargeFX.Play();
         StartCoroutine(DischargingMagic(howManySecondsToDischargeFor));
     }
 
