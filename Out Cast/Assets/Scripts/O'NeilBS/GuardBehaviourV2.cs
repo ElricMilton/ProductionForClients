@@ -8,7 +8,7 @@ public class GuardBehaviourV2 : MonoBehaviour
 {
 
     public BoolVariable chaseSatus;
-    public Animator guardStateMachineAnimator;
+    
     public Animator movementAnimator;
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
@@ -94,7 +94,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             searchTime = startSearchTime;
             gameState = GameStates.chasing;
-            guardStateMachineAnimator.SetBool("IsSearching", false);
         }
 
         if (gameState == GameStates.chasing & player == null)
@@ -107,8 +106,6 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void Chasing()
     {
-        guardStateMachineAnimator.enabled = false;
-        guardStateMachineAnimator.SetBool("IsSearching", false);
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
@@ -168,15 +165,12 @@ public class GuardBehaviourV2 : MonoBehaviour
 
         if (searchTime >= 0)
         {
-            guardStateMachineAnimator.enabled = true;
-            guardStateMachineAnimator.SetBool("IsSearching", true);
+            movementAnimator.Play("Searching");
             searchTime -= (timerDecrease * Time.deltaTime);
-            movementAnimator.SetFloat("Move", 0f);
         }
         else
         {
-            guardStateMachineAnimator.enabled = false;
-            guardStateMachineAnimator.SetBool("IsSearching", false);
+            movementAnimator.Play("Movement");
             gameState = GameStates.returningToPost;
             searchTime = startSearchTime;
         }

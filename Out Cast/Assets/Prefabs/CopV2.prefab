@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1629095971162466027}
   - component: {fileID: 1629095971162466026}
   - component: {fileID: 1629095971162466016}
-  - component: {fileID: 1629095971162466017}
   - component: {fileID: 1875719765}
   - component: {fileID: 1311885815}
   - component: {fileID: 1311885816}
@@ -83,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSatus: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
-  guardStateMachineAnimator: {fileID: 1629095971162466017}
+  guardStateMachineAnimator: {fileID: 0}
   movementAnimator: {fileID: 8742343380016797952}
   playerPos: {fileID: 11400000, guid: 012e2137c918fe3438a3e06e531fe2cd, type: 2}
   agent: {fileID: 1875719765}
@@ -96,25 +95,6 @@ MonoBehaviour:
   patrolPoint: {fileID: 4983049206214384795, guid: 24a2048e3cc3f024aba34aad3577a5bf, type: 3}
   searchTime: 0
   startSearchTime: 5
---- !u!95 &1629095971162466017
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629095971162466024}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb56a8335617a654f905115d352c1df6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &1875719765
 NavMeshAgent:
   m_ObjectHideFlags: 0
