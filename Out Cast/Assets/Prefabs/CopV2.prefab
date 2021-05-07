@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1311885815}
   - component: {fileID: 1311885816}
   m_Layer: 0
-  m_Name: EnemyPatrolTest
+  m_Name: CopV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   stopDistanceMax: 0.75
   destination: {x: 0, y: 0, z: 0}
   reachedDestination: 0
+  movementAnimator: {fileID: 8742343380016797952}
 --- !u!1 &1629095971323427427
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         chasing,
         searching,
         returningToPost,
-
     }
     GameStates gameState;
     void Start()
@@ -104,7 +103,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
 
 
-        movementAnimator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     void Chasing()
@@ -126,6 +124,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             //transform.position += transform.forward * speed * Time.deltaTime;
             agent.SetDestination(target.transform.position);
+            movementAnimator.SetFloat("Move", 1f);
         }
         else
         {
@@ -135,7 +134,6 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void ReturnToPost()
     {
-
         if ((transform.position - post.transform.position).magnitude > 5f)
         {
             //var speed = 4f;
@@ -143,17 +141,17 @@ public class GuardBehaviourV2 : MonoBehaviour
             //transform.LookAt(post.transform, Vector3.up);
             agent.SetDestination(post.transform.position);
             //transform.position += transform.forward * speed * Time.deltaTime;
+            movementAnimator.SetFloat("Move", 0.5f);
         }
         else
         {
             gameState = GameStates.patroling;
         }
-
     }
 
     void IsSearching()
     {
-        if ((transform.position - playerPos.playerLastPos).magnitude > .5f)
+        if ((transform.position - playerPos.playerLastPos).magnitude > 0.5f)
         {
             var speed = 4f;
 
@@ -169,11 +167,13 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void Search()
     {
+
         if (searchTime >= 0)
         {
             guardStateMachineAnimator.enabled = true;
             guardStateMachineAnimator.SetBool("IsSearching", true);
             searchTime -= (timerDecrease * Time.deltaTime);
+            movementAnimator.SetFloat("Move", 0f);
         }
         else
         {
@@ -186,6 +186,7 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void StartPatrol()
     {
+        movementAnimator.SetFloat("Move", 0.5f);
         guard.GetComponent<PedestrianNavigationController>().enabled = true;
         guard.GetComponent<WaypointNavigator>().enabled = true;
         guard.GetComponent<NavMeshAgent>().enabled = false;

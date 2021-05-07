@@ -28,11 +28,10 @@ public class PedestrianNavigationController : MonoBehaviour
     private Vector3 velocity;
 
     private NavMeshAgent navAgent;
-    private Animator movementAnimator;
+    public Animator movementAnimator;
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        movementAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Awake()
@@ -72,13 +71,13 @@ public class PedestrianNavigationController : MonoBehaviour
 
             //_animator.SetFloat("Horizontal", rightDotProduct);
             //_animator.SetFloat("Forward", fwdDotProduct);
-            movementAnimator.SetFloat("Move", navAgent.velocity.magnitude);
 
         }
         else
         {
             reachedDestination = true;
         }
+        movementAnimator.SetFloat("Move", 0.5f);
     }
 
     public void SetDestination(Vector3 destination)
