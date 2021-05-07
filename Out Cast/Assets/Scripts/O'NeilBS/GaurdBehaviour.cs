@@ -72,22 +72,79 @@ public class GaurdBehaviour : MonoBehaviour
     }
 
 
-   /* void searching()
-    {
+    /* void searching()
+     {
 
-        if (searchTime <= 0f)
-        {
-            searchTime = startSearchTime;
-            enemy.GetComponent<ChaseState>().enabled = false;
-            enemy.GetComponent<SearchState>().enabled = false;
-            enemy.GetComponent<PatrolState>().enabled = true;
-            isChasing = false;
-            isSearching = false;
-            isPatroling = true;
-        }
-        else
-        {
-            searchTime -= (1f * Time.deltaTime);
-        }
-    }*/
+         if (searchTime <= 0f)
+         {
+             searchTime = startSearchTime;
+             enemy.GetComponent<ChaseState>().enabled = false;
+             enemy.GetComponent<SearchState>().enabled = false;
+             enemy.GetComponent<PatrolState>().enabled = true;
+             isChasing = false;
+             isSearching = false;
+             isPatroling = true;
+         }
+         else
+         {
+             searchTime -= (1f * Time.deltaTime);
+         }
+     }*/
+
+    //from guard behaviour v1
+
+
+    public Vector3 moveSpot;
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
+
+
+
+    //public bool _canWalk = false;
+    //void Move()
+    //{
+    //    if (_canWalk == true)
+    //    {
+    //        //moves to new position 
+    //        transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
+    //        _canWalk = false;
+    //    }
+
+    //    if (Vector3.Distance(transform.position, moveSpot) < 0.2f)
+    //    {
+    //        //when wait time is up create new postion to move too
+    //        if (waitTime <= 0)
+    //        {
+    //            moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+    //            waitTime = startWaitTime;
+    //        }
+    //        //decreses wait time in seconds
+    //        else
+    //        {
+    //            waitTime -= (timerDecrease * Time.deltaTime);
+    //        }
+    //    }
+
+    //    //if (transform.position == moveSpot)
+    //    //{
+    //    //    moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
+    //    //}
+    //}
+
+    //[SerializeField] float _lerpDuration = 3f;
+    //[SerializeField] float _angleLimit = 0f;
+    //void TurnToLook()
+    //{
+    //    Vector3 direction = moveSpot - transform.position;
+    //    Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+    //    //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, toRotation.y, 0, 0), _lerpDuration * Time.deltaTime);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, _lerpDuration * Time.deltaTime);
+
+    //    if (Quaternion.Angle(transform.rotation, toRotation) == _angleLimit)
+    //    {
+    //        _canWalk = true;
+    //    }
+    //}
 }
