@@ -13,6 +13,8 @@ public class GuardBehaviourV2 : MonoBehaviour
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
 
+    public GameObject guard;
+
     // public RangeSensor sensor;
     public TriggerSensor fov;
     public GameObject post;
@@ -27,11 +29,6 @@ public class GuardBehaviourV2 : MonoBehaviour
     public float searchTime;
     public float startSearchTime;
 
-    public Vector3 moveSpot;
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
     
     public enum GameStates
     {
@@ -44,6 +41,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     GameStates gameState;
     void Start()
     {
+        StartPatrol();
         gameState = GameStates.patroling;
         searchTime = startSearchTime;
     }
@@ -54,10 +52,12 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             case GameStates.patroling:
                 Debug.Log("We are in state patroling!");
+                StartPatrol();
                 break;
             case GameStates.chasing:
                 Debug.Log("We are in state chasing!");
                 Chasing();
+                StopPatrol();
                 break;
             case GameStates.searching:
                 Debug.Log("We are in state searching!");
@@ -136,7 +136,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     void ReturnToPost()
     {
 
-        if ((transform.position - post.transform.position).magnitude > 2f)
+        if ((transform.position - post.transform.position).magnitude > 5f)
         {
             //var speed = 4f;
 
@@ -153,7 +153,7 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void IsSearching()
     {
-        if ((transform.position - playerPos.playerLastPos).magnitude > 2f)
+        if ((transform.position - playerPos.playerLastPos).magnitude > .5f)
         {
             var speed = 4f;
 
@@ -184,52 +184,18 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
     }
 
-
-    //public bool _canWalk = false;
-    //void Move()
-    //{
-    //    if (_canWalk == true)
-    //    {
-    //        //moves to new position 
-    //        transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
-    //        _canWalk = false;
-    //    }
-
-    //    if (Vector3.Distance(transform.position, moveSpot) < 0.2f)
-    //    {
-    //        //when wait time is up create new postion to move too
-    //        if (waitTime <= 0)
-    //        {
-    //            moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
-    //            waitTime = startWaitTime;
-    //        }
-    //        //decreses wait time in seconds
-    //        else
-    //        {
-    //            waitTime -= (timerDecrease * Time.deltaTime);
-    //        }
-    //    }
-
-    //    //if (transform.position == moveSpot)
-    //    //{
-    //    //    moveSpot = new Vector3((Random.Range(minX, maxX) + patrolPoint.transform.position.x), patrolPoint.transform.position.y, (Random.Range(minY, maxY) + patrolPoint.transform.position.z));
-    //    //}
-    //}
-
-    //[SerializeField] float _lerpDuration = 3f;
-    //[SerializeField] float _angleLimit = 0f;
-    //void TurnToLook()
-    //{
-    //    Vector3 direction = moveSpot - transform.position;
-    //    Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-    //    //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, toRotation.y, 0, 0), _lerpDuration * Time.deltaTime);
-    //    transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, _lerpDuration * Time.deltaTime);
-
-    //    if (Quaternion.Angle(transform.rotation, toRotation) == _angleLimit)
-    //    {
-    //        _canWalk = true;
-    //    }
-    //}
+    void StartPatrol()
+    {
+        guard.GetComponent<PedestrianNavigationController>().enabled = true;
+        guard.GetComponent<WaypointNavigator>().enabled = true;
+        guard.GetComponent<NavMeshAgent>().enabled = false;
+    }
+    void StopPatrol()
+    {
+        guard.GetComponent<PedestrianNavigationController>().enabled = false;
+        guard.GetComponent<WaypointNavigator>().enabled = false;
+        guard.GetComponent<NavMeshAgent>().enabled = true;
+    }
 
 
 }
