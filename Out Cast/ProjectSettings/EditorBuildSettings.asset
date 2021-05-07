@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/Scenes/Test Scenes/Elric.unity
-    guid: c0e2d8ff2d872f44f82cb23c805f1edb
+    path: Assets/Scenes/BETA/Menu.unity
+    guid: f80f186fa01d795408358b4d5c00a33d
+  - enabled: 1
+    path: Assets/Scenes/BETA/BlockOut.unity
+    guid: b0e2db9bb846ea54482d487078e57666
   m_configObjects: {}
