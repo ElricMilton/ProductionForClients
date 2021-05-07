@@ -17,7 +17,7 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     // public RangeSensor sensor;
     public TriggerSensor fov;
-    public GameObject post;
+    public Waypoint post;
     public float chaseSpeed = 4f;
 
     //for searching state
