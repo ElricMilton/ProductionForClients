@@ -91,7 +91,7 @@ MonoBehaviour:
   fov: {fileID: 1629095972197244274}
   post: {fileID: 0}
   chaseSpeed: 4
-  speed: 4
+  speed: 2
   timerDecrease: 1
   patrolPoint: {fileID: 4983049206214384795, guid: 24a2048e3cc3f024aba34aad3577a5bf, type: 3}
   searchTime: 0

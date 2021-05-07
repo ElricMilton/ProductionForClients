@@ -153,8 +153,6 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         if ((transform.position - playerPos.playerLastPos).magnitude > 0.5f)
         {
-            var speed = 4f;
-
             transform.LookAt(playerPos.playerLastPos, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
