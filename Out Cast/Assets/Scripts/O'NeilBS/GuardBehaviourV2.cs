@@ -70,22 +70,22 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameState = GameStates.patroling;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameState = GameStates.chasing;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gameState = GameStates.searching;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            gameState = GameStates.returningToPost;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    gameState = GameStates.patroling;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    gameState = GameStates.chasing;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    gameState = GameStates.searching;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    gameState = GameStates.returningToPost;
+        //}
 
 
 
