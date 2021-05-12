@@ -29,7 +29,16 @@ public class GuardBehaviourV2 : MonoBehaviour
     public float searchTime;
     public float startSearchTime;
 
-    
+    public AudioClip alertedClip;
+    public AudioClip returningToPostClip;
+    public AudioClip idleChatterClip1;
+    public AudioClip idleChatterClip2;
+    AudioSource audioSource;
+    bool alertPlaying = false;
+    bool returnPlaying = false;
+    bool idle1Playing = false;
+    bool idle2Playing = false;
+
     public enum GameStates
     {
         patroling,
@@ -40,21 +49,48 @@ public class GuardBehaviourV2 : MonoBehaviour
     GameStates gameState;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartPatrol();
         gameState = GameStates.patroling;
         searchTime = startSearchTime;
     }
 
+    void CheckDistance()
+    { 
+        var player = fov.GetNearest(); 
+    }
+
     void Update()
     {
+
+
         switch (gameState)
         {
             case GameStates.patroling:
                 Debug.Log("We are in state patroling!");
+                alertPlaying = false;
+                returnPlaying = false;
+                idle2Playing = false;
+
+                if (!idle1Playing)
+                {
+                    audioSource.PlayOneShot(idleChatterClip1);
+                    idle1Playing = true;
+                }
+
                 StartPatrol();
                 break;
             case GameStates.chasing:
                 Debug.Log("We are in state chasing!");
+                returnPlaying = false;
+                idle2Playing = false;
+                idle1Playing = false;
+
+                if (!alertPlaying)
+                {
+                    audioSource.PlayOneShot(alertedClip);
+                    alertPlaying = true;
+                }
                 Chasing();
                 StopPatrol();
                 break;
@@ -64,6 +100,15 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
             case GameStates.returningToPost:
                 Debug.Log("We are in state returningToPost!");
+                idle2Playing = false;
+                idle1Playing = false;
+                alertPlaying = false;
+
+                if (!returnPlaying)
+                {
+                    audioSource.PlayOneShot(returningToPostClip);
+                    returnPlaying = true;
+                }
                 ReturnToPost();
                 break;
             default:
@@ -119,6 +164,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         transform.LookAt(target.transform.position);
         if ((transform.position - target.transform.position).magnitude > 2f)
         {
+
             //transform.position += transform.forward * speed * Time.deltaTime;
             agent.SetDestination(target.transform.position);
             movementAnimator.SetFloat("Move", 1f);
@@ -156,6 +202,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         else
         {
             Search();
+
         }
 
     }
@@ -189,6 +236,4 @@ public class GuardBehaviourV2 : MonoBehaviour
         guard.GetComponent<WaypointNavigator>().enabled = false;
         guard.GetComponent<NavMeshAgent>().enabled = true;
     }
-
-
 }
