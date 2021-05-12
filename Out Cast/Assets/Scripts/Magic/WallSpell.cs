@@ -20,9 +20,11 @@ public class WallSpell : MonoBehaviour
     Animator wallAnim;
     ParticleSystem particle;
     Camera cam;
+    AudioManager audioManager;
 
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         cam = Camera.main;
         wallAnim = wall.GetComponentInChildren<Animator>();
         particle = wall.GetComponentInChildren<ParticleSystem>();
@@ -68,6 +70,7 @@ public class WallSpell : MonoBehaviour
         wallSpawnMarker.SetActive(false);
         wall.SetActive(true);
         wall.transform.position = spawnPos;
+        audioManager.Play("Wall");
         particle.Play();
         wallAnim.Play("WallRising");
         spawnable = false;

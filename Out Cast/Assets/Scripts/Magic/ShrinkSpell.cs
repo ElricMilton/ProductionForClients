@@ -7,6 +7,7 @@ public class ShrinkSpell : MonoBehaviour
     [SerializeField] float cooldown = 3;
     [SerializeField] GameEvent shrinkSpellEvent;
     Animator anim;
+    AudioManager audioManager;
 
     bool castable = true;
     bool shrinking = false;
@@ -16,6 +17,7 @@ public class ShrinkSpell : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
@@ -44,6 +46,7 @@ public class ShrinkSpell : MonoBehaviour
         {
             fullSize = false;
             anim.Play("Shrink");
+            audioManager.Play("Shrink");
             StartCoroutine(ShrinkTime());
         }
     }
@@ -54,6 +57,7 @@ public class ShrinkSpell : MonoBehaviour
             if (!shrinking)
             {
                 castable = false;
+                audioManager.Play("Grow");
                 anim.Play("Grow");
                 StartCoroutine(Cooldown());
                 fullSize = true;
@@ -87,6 +91,7 @@ public class ShrinkSpell : MonoBehaviour
     {
         yield return new WaitForSeconds(0.45f);
         fullSize = true;
+        audioManager.Play("Grow");
         anim.Play("Grow");
         StartCoroutine(Cooldown());
         delayGrowth = false;
