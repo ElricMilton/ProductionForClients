@@ -95,7 +95,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 StopPatrol();
                 break;
             case GameStates.searching:
-                Debug.Log("We are in state searching!");
+                //Debug.Log("We are in state searching!");
                 IsSearching();
                 break;
             case GameStates.returningToPost:
@@ -139,6 +139,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             searchTime = startSearchTime;
             gameState = GameStates.chasing;
+
         }
 
         if (gameState == GameStates.chasing & player == null)

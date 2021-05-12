@@ -12,6 +12,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public Animator movementAnimator;
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
+    public GameObject player;
 
     public GameObject pedestrian;
 
@@ -22,10 +23,11 @@ public class PedestrianBehaviour : MonoBehaviour
     //for searching state
     public Waypoint post;
     public float runSpeed = 4f;
+    public float EnemyDistanceRun = 4f;
 
     //timer vars
-    public float searchTime;
-    public float startSearchTime;
+    public float runTime;
+    public float startRunTime;
     public float timerDecrease = 1f;
 
     public enum GameStates
@@ -39,7 +41,7 @@ public class PedestrianBehaviour : MonoBehaviour
     {
         StartPatrol();
         gameState = GameStates.patroling;
-        searchTime = startSearchTime;
+        runTime = startRunTime;
     }
 
     void Update()
@@ -51,12 +53,13 @@ public class PedestrianBehaviour : MonoBehaviour
                 StartPatrol();
                 break;
             case GameStates.running:
-                Debug.Log("We are in state chasing!");
-                Running();
+                Debug.Log("We are in state running!");
                 StopPatrol();
+                Running();
+
                 break;
             case GameStates.movingToCop:
-                Debug.Log("We are in state searching!");
+                Debug.Log("We are in state movingToCop!");
                 MoveToCop();
                 break;
             default:
@@ -81,54 +84,82 @@ public class PedestrianBehaviour : MonoBehaviour
         var player = fov.GetNearest();
         if (player != null & chaseSatus.Value == true)
         {
-            searchTime = startSearchTime;
+            playerPos.playerLastPos = player.transform.position;
+            runTime = startRunTime;
             gameState = GameStates.running;
+            Debug.Log("found you");
         }
 
-        if (gameState == GameStates.running & player == null)
-        {
-            gameState = GameStates.movingToCop;
-        }
+        //if (gameState == GameStates.running & player == null)
+        //{
+        //    gameState = GameStates.movingToCop;
+        //}
 
 
     }
 
     void Running()
     {
-        var deteced = rangeSensor.GetNearest();
-        if (deteced != null)
+        //var deteced = rangeSensor.GetNearest();
+        //if (deteced.tag == "Player")
+        //{
+        //    RunFrom(deteced);
+        //}
+        //transform.LookAt(-player.transform.position);
+        //if ((transform.position - player.transform.position).magnitude < 15f)
+        //{
+        //    //transform.position += transform.forward * speed * Time.deltaTime;
+        //    var FromPlayer =  transform.position - player.transform.position;
+        //    agent.SetDestination(FromPlayer);
+        //    movementAnimator.SetFloat("Move", 1f);
+        //}
+        //else
+        //{
+        //    gameState = GameStates.movingToCop;
+        //}
+
+
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        Debug.Log("distance" + distance);
+
+        if(distance > EnemyDistanceRun)
         {
-            RunFrom(deteced);
+            Vector3 dirToPlayer = transform.position - player.transform.position;
+
+            Vector3 newPos = transform.position + dirToPlayer;
+
+            agent.SetDestination(newPos);
         }
     }
 
-    void RunFrom(GameObject target)
-    {
-        playerPos.playerLastPos = target.transform.position;
-        transform.LookAt(target.transform.position);
-        if ((transform.position + target.transform.position).magnitude > 15f)
-        {
-            //transform.position += transform.forward * speed * Time.deltaTime;
-            agent.SetDestination(-target.transform.position);
-            movementAnimator.SetFloat("Move", 1f);
-        }
-        else
-        {
-            return;
-        }
-    }
+    //void RunFrom(GameObject target)
+    //{
+    //    playerPos.playerLastPos = target.transform.position;
+    //    transform.LookAt(-target.transform.position);
+    //    if ((transform.position + target.transform.position).magnitude > 15f)
+    //    {
+    //        //transform.position += transform.forward * speed * Time.deltaTime;
+    //        agent.SetDestination(-target.transform.position);
+    //        movementAnimator.SetFloat("Move", 1f);
+    //    }
+    //    else
+    //    {
+    //        return;
+    //    }
+    //}
 
     void MoveToCop()
     {
 
         var deteced = rangeSensor.GetNearest();
-        if (deteced.tag == "Cop")
+        if (deteced != null)
         {
-            if ((transform.position - post.transform.position).magnitude > 5f)
+            if ((transform.position - deteced.transform.position).magnitude > 5f)
             {
 
                 //transform.LookAt(post.transform, Vector3.up);
-                agent.SetDestination(post.transform.position);
+                agent.SetDestination(deteced.transform.position);
                 //transform.position += transform.forward * speed * Time.deltaTime;
                 movementAnimator.SetFloat("Move", 0.5f);
             }
