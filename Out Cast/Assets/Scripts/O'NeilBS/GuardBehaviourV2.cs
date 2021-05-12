@@ -50,20 +50,20 @@ public class GuardBehaviourV2 : MonoBehaviour
         switch (gameState)
         {
             case GameStates.patroling:
-                Debug.Log("We are in state patroling!");
+                //Debug.Log("We are in state patroling!");
                 StartPatrol();
                 break;
             case GameStates.chasing:
-                Debug.Log("We are in state chasing!");
+                //Debug.Log("We are in state chasing!");
                 Chasing();
                 StopPatrol();
                 break;
             case GameStates.searching:
-                Debug.Log("We are in state searching!");
+                //Debug.Log("We are in state searching!");
                 IsSearching();
                 break;
             case GameStates.returningToPost:
-                Debug.Log("We are in state returningToPost!");
+                //Debug.Log("We are in state returningToPost!");
                 ReturnToPost();
                 break;
             default:
@@ -94,6 +94,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             searchTime = startSearchTime;
             gameState = GameStates.chasing;
+
         }
 
         if (gameState == GameStates.chasing & player == null)
