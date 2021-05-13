@@ -82,17 +82,17 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
             case GameStates.chasing:
                 Debug.Log("We are in state chasing!");
-                returnPlaying = false;
-                idle2Playing = false;
-                idle1Playing = false;
+               // returnPlaying = false;
+               // idle2Playing = false;
+               // idle1Playing = false;
 
-                if (!alertPlaying)
+               // if (!alertPlaying)
                 {
                     audioSource.PlayOneShot(alertedClip);
                     alertPlaying = true;
                 }
-                Chasing();
-                StopPatrol();
+                //Chasing();
+                //StopPatrol();
                 break;
             case GameStates.searching:
                 //Debug.Log("We are in state searching!");
@@ -150,8 +150,9 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     }
 
-    void Chasing()
+    public void Chasing()
     {
+        audioSource.PlayOneShot(alertedClip);
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
