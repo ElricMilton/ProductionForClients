@@ -62,11 +62,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         searchTime = startSearchTime;
     }
 
-    void CheckDistance()
-    { 
-        var player = fov.GetNearest(); 
-    }
-
     void Update()
     {
 
@@ -74,7 +69,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         switch (gameState)
         {
             case GameStates.patroling:
-                Debug.Log("We are in state patroling!");
+                //Debug.Log("We are in state patroling!");
                 alertPlaying = false;
                 returnPlaying = false;
                 idle2Playing = false;
@@ -88,7 +83,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 StartPatrol();
                 break;
             case GameStates.chasing:
-                Debug.Log("We are in state chasing!");
+                //Debug.Log("We are in state chasing!");
                 returnPlaying = false;
                 idle2Playing = false;
                 idle1Playing = false;
@@ -107,7 +102,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 IsSearching();
                 break;
             case GameStates.returningToPost:
-                Debug.Log("We are in state returningToPost!");
+                //Debug.Log("We are in state returningToPost!");
                 idle2Playing = false;
                 idle1Playing = false;
                 alertPlaying = false;
@@ -138,22 +133,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Alpha4))
         //{
         //    gameState = GameStates.returningToPost;
-        //}
-
-
-
-        //var player = fov.GetNearest();
-        //if (player != null & chaseSatus.Value == true)
-        //{
-        //    searchTime = startSearchTime;
-        //    gameState = GameStates.chasing;
-        //    _OnChase?.Invoke();
-        //}
-
-        //if (gameState == GameStates.chasing & player == null)
-        //{
-        //    gameState = GameStates.searching;
-        //    _OnSearching?.Invoke();
         //}
     }
 
@@ -195,11 +174,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         if ((transform.position - post.transform.position).magnitude > 2f)
         {
-            //var speed = 4f;
-
-            //transform.LookAt(post.transform, Vector3.up);
             agent.SetDestination(post.transform.position);
-            //transform.position += transform.forward * speed * Time.deltaTime;
             movementAnimator.SetFloat("Move", 0.5f);
         }
         else
