@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     Queue<string> sentences;
 
     [SerializeField] Dialogue dialogue;
-    [SerializeField] float timeBetweenSentences = 3;
+    [SerializeField] float timeBetweenSentences = 2;
 
     private void Awake()
     {
