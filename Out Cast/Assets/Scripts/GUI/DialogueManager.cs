@@ -23,13 +23,6 @@ public class DialogueManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
@@ -54,7 +47,7 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         popup.SetActive(false);
-
+        StopCoroutine(SentenceTimer());
     }
 
     public void StartDialogue()
@@ -82,7 +75,7 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
-        
+        StopCoroutine(SentenceTimer());
     }
 
     IEnumerator SentenceTimer()

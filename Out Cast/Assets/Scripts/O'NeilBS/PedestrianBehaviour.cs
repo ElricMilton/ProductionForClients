@@ -79,8 +79,6 @@ public class PedestrianBehaviour : MonoBehaviour
             gameState = GameStates.movingToCop;
         }
 
-
-
         var player = fov.GetNearest();
         if (player != null & chaseSatus.Value == true)
         {
@@ -89,13 +87,15 @@ public class PedestrianBehaviour : MonoBehaviour
             gameState = GameStates.running;
             Debug.Log("found you");
         }
-
         //if (gameState == GameStates.running & player == null)
         //{
         //    gameState = GameStates.movingToCop;
         //}
+    }
 
-
+    public void GetCopTransition()
+    {
+        gameState = GameStates.movingToCop;
     }
 
     void Running()
