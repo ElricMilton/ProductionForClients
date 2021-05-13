@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6645810404512542753}
   m_Layer: 13
   m_Name: CopV2
-  m_TagString: Untagged
+  m_TagString: Cop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   playerPos: {fileID: 11400000, guid: 012e2137c918fe3438a3e06e531fe2cd, type: 2}
   agent: {fileID: 1875719765}
   guard: {fileID: 1629095971162466024}
+  guardModle: {fileID: 8742343380026190554}
   fov: {fileID: 1629095972197244274}
   post: {fileID: 0}
   chaseSpeed: 4
@@ -94,7 +95,7 @@ MonoBehaviour:
   timerDecrease: 1
   patrolPoint: {fileID: 4983049206214384795, guid: 24a2048e3cc3f024aba34aad3577a5bf, type: 3}
   searchTime: 0
-  startSearchTime: 5
+  startSearchTime: 4
   alertedClip: {fileID: 8300000, guid: 6d22e5ec9f964ca42ac180296d91dd7a, type: 3}
   returningToPostClip: {fileID: 8300000, guid: 0e0fef744898b0e468f8ddec4e1d5e87, type: 3}
   idleChatterClip1: {fileID: 8300000, guid: 0c4d69a742fa0a042bc18f09ee3ebdad, type: 3}
@@ -112,7 +113,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -407,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629095972197244273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.826, z: 0.1}
+  m_LocalPosition: {x: 0, y: 1.26, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629095971162466020}
@@ -442,7 +443,7 @@ MonoBehaviour:
   Length: 11
   BaseSize: 1.18
   FOVAngle: 90
-  ElevationAngle: 39
+  ElevationAngle: 90
   Resolution: 2
 --- !u!114 &1629095972197244274
 MonoBehaviour:
@@ -463,15 +464,39 @@ MonoBehaviour:
   - Player
   OnDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1629095971162466016}
+        m_TargetAssemblyTypeName: GuardBehaviourV2, Assembly-CSharp
+        m_MethodName: ChaseStateTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLostDetection:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1629095971162466016}
+        m_TargetAssemblyTypeName: GuardBehaviourV2, Assembly-CSharp
+        m_MethodName: SearchStateTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DetectionMode: 1
   RequiresLineOfSight: 1
   BlocksLineOfSight:
     serializedVersion: 2
-    m_Bits: 2147491383
+    m_Bits: 7735
   TestLOSTargetsOnly: 1
   NumberOfRays: 1
   MinimumVisibility: 0.5
@@ -887,6 +912,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: af3e7395fe2be1545b67be0947b9a597, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897b34267f422c1499700402763d096e, type: 3}
+--- !u!1 &8742343380026190554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100026, guid: 897b34267f422c1499700402763d096e, type: 3}
+  m_PrefabInstance: {fileID: 8742343380026223712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8742343380026357498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400026, guid: 897b34267f422c1499700402763d096e, type: 3}
