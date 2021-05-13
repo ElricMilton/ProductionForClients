@@ -15,6 +15,8 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     public GameObject guard;
 
+    public GameObject guardModle;
+
     // public RangeSensor sensor;
     public TriggerSensor fov;
     public Waypoint post;
@@ -38,6 +40,11 @@ public class GuardBehaviourV2 : MonoBehaviour
     bool returnPlaying = false;
     bool idle1Playing = false;
     bool idle2Playing = false;
+
+    GameEvent _OnPatrol;
+    GameEvent _OnChase;
+    GameEvent _OnReturnToPost;
+    GameEvent _OnSearching;
 
     public enum GameStates
     {
@@ -82,17 +89,18 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
             case GameStates.chasing:
                 Debug.Log("We are in state chasing!");
-               // returnPlaying = false;
-               // idle2Playing = false;
-               // idle1Playing = false;
+                returnPlaying = false;
+                idle2Playing = false;
+                idle1Playing = false;
 
-               // if (!alertPlaying)
+                if (!alertPlaying)
                 {
                     audioSource.PlayOneShot(alertedClip);
                     alertPlaying = true;
                 }
-                //Chasing();
-                //StopPatrol();
+
+                Chasing();
+                StopPatrol();
                 break;
             case GameStates.searching:
                 //Debug.Log("We are in state searching!");
@@ -134,25 +142,33 @@ public class GuardBehaviourV2 : MonoBehaviour
 
 
 
-        var player = fov.GetNearest();
-        if (player != null & chaseSatus.Value == true)
-        {
-            searchTime = startSearchTime;
-            gameState = GameStates.chasing;
+        //var player = fov.GetNearest();
+        //if (player != null & chaseSatus.Value == true)
+        //{
+        //    searchTime = startSearchTime;
+        //    gameState = GameStates.chasing;
+        //    _OnChase?.Invoke();
+        //}
 
-        }
+        //if (gameState == GameStates.chasing & player == null)
+        //{
+        //    gameState = GameStates.searching;
+        //    _OnSearching?.Invoke();
+        //}
+    }
 
-        if (gameState == GameStates.chasing & player == null)
-        {
-            gameState = GameStates.searching;
-        }
+    public void PlaySFXOneShot(AudioClip clip)
+    {
+        audioSource.PlayOneShot(alertedClip);
+    }
 
-
+    public void PlayTransitionAnimation(string animStateName)
+    {
+        movementAnimator.Play(animStateName);
     }
 
     public void Chasing()
     {
-        audioSource.PlayOneShot(alertedClip);
         var deteced = fov.GetNearest();
         if (deteced != null)
         {
@@ -166,20 +182,18 @@ public class GuardBehaviourV2 : MonoBehaviour
         transform.LookAt(target.transform.position);
         if ((transform.position - target.transform.position).magnitude > 2f)
         {
-
-            //transform.position += transform.forward * speed * Time.deltaTime;
             agent.SetDestination(target.transform.position);
             movementAnimator.SetFloat("Move", 1f);
         }
-        else
+        if ((transform.position - target.transform.position).magnitude < 2f)
         {
-            return;
+            movementAnimator.SetFloat("Move", 0f);
         }
     }
 
     void ReturnToPost()
     {
-        if ((transform.position - post.transform.position).magnitude > 5f)
+        if ((transform.position - post.transform.position).magnitude > 2f)
         {
             //var speed = 4f;
 
@@ -191,6 +205,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         else
         {
             gameState = GameStates.patroling;
+           _OnPatrol?.Invoke();
         }
     }
 
@@ -204,14 +219,12 @@ public class GuardBehaviourV2 : MonoBehaviour
         else
         {
             Search();
-
         }
 
     }
 
     void Search()
     {
-
         if (searchTime >= 0)
         {
             movementAnimator.Play("Searching");
@@ -221,21 +234,35 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             movementAnimator.Play("Movement");
             gameState = GameStates.returningToPost;
+            _OnReturnToPost?.Invoke();
+            guardModle.transform.localRotation = Quaternion.identity;
+            guardModle.transform.localPosition = new Vector3(0, 0, 0);
             searchTime = startSearchTime;
         }
     }
 
-    void StartPatrol()
-    {
+    public void StartPatrol()
+    { 
         movementAnimator.SetFloat("Move", 0.5f);
         guard.GetComponent<PedestrianNavigationController>().enabled = true;
         guard.GetComponent<WaypointNavigator>().enabled = true;
         guard.GetComponent<NavMeshAgent>().enabled = false;
     }
-    void StopPatrol()
+    public void StopPatrol()
     {
         guard.GetComponent<PedestrianNavigationController>().enabled = false;
         guard.GetComponent<WaypointNavigator>().enabled = false;
         guard.GetComponent<NavMeshAgent>().enabled = true;
     }
+
+    public void ChaseStateTransition()
+    {
+        gameState = GameStates.chasing;
+    }
+
+    public void SearchStateTransition()
+    {
+        gameState = GameStates.searching;
+    }
+
 }
