@@ -1,26 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+
     [SerializeField] GameObject popup;
     [SerializeField] Animator anim;
     GameObject player;
+    public TextMeshProUGUI textField;
+    public TextMeshProUGUI nameField;
+    Queue<string> sentences;
+
+    [SerializeField] Dialogue dialogue;
+    [SerializeField] float timeBetweenSentences = 3;
 
     private void Awake()
     {
+        sentences = new Queue<string>();
         player = GameObject.FindGameObjectWithTag("Player");
-        //anim = GetComponentInChildren<Animator>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
         {
-            //StopCoroutine(DeactivateAfterX());
             popup.SetActive(true);
             anim.Play("DialogueSpawn");
+            StartDialogue();
         }
     }
 
@@ -29,6 +45,7 @@ public class DialogueManager : MonoBehaviour
         if (other.gameObject == player)
         {
             anim.Play("DialogueDespawn");
+            StopCoroutine(SentenceTimer());
             StartCoroutine(DeactivateAfterX());
         }
     }
@@ -40,4 +57,40 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public void StartDialogue()
+    {
+        nameField.text = dialogue.name;
+        sentences.Clear();
+
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        StartCoroutine(SentenceTimer());
+    }
+
+    public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+        string sentence = sentences.Dequeue();
+        textField.text = sentence;
+    }
+    void EndDialogue()
+    {
+        
+    }
+
+    IEnumerator SentenceTimer()
+    {
+        DisplayNextSentence();
+        yield return new WaitForSeconds(timeBetweenSentences);
+        DisplayNextSentence();
+        yield return new WaitForSeconds(timeBetweenSentences);
+        DisplayNextSentence();
+    }
 }
