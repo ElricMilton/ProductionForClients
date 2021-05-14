@@ -29,18 +29,23 @@ public class PedestrianBehaviour : MonoBehaviour
     public float startRunTime;
     public float timerDecrease = 1f;
 
+    public BoolVariable areCopsAlerted;
+
     public enum GameStates
     {
         patroling,
         running,
         movingToCop,
+        cowering,
     }
     GameStates gameState;
+
     void Start()
     {
         StartWander();
         gameState = GameStates.patroling;
         runTime = startRunTime;
+        cowerTime = startCowerTime;
     }
 
     void Update()
@@ -58,7 +63,11 @@ public class PedestrianBehaviour : MonoBehaviour
                 break;
             case GameStates.movingToCop:
                 Debug.Log("We are in state movingToCop!");
+                StopWander();
                 MoveToCop();
+                break;
+            case GameStates.cowering:
+                Cower();
                 break;
             default:
                 break;
@@ -143,28 +152,45 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void MoveToCop()
     {
-
-        var deteced = rangeSensor.GetNearest();
-        if (deteced != null)
+        var detected = rangeSensor.GetNearest();
+        if (detected != null && areCopsAlerted.Value == false)
         {
-            if ((transform.position - deteced.transform.position).magnitude > 3f)
+            if ((transform.position - detected.transform.position).magnitude > 1.5f)
             {
-                agent.SetDestination(deteced.transform.position);
-                movementAnimator.SetFloat("Move", 0.5f);
+                agent.SetDestination(detected.transform.position);
+                agent.speed = runSpeed;
+                movementAnimator.SetFloat("Move", 2f);
             }
-            else
+            else if ((transform.position - detected.transform.position).magnitude < 1.5f)
             {
-                deteced.GetComponent<GuardBehaviourV2>().SearchStateTransition();
-                gameState = GameStates.patroling;
+                detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
+                gameState = GameStates.cowering;
             }
         }
 
     }
 
+    public float cowerTime;
+    public float startCowerTime = 5f;
+    void Cower()
+    {
+        if(cowerTime > 0)
+        {
+            agent.speed = 0;
+            cowerTime -= 1 * Time.deltaTime;
+            //play the cower animation here
+        }
+        else
+        {
+            agent.speed = 1;
+            cowerTime = startCowerTime;
+            gameState = GameStates.patroling;
+        }
+    }
 
     void StartWander()
     {
-        movementAnimator.SetFloat("Move", 0.5f);
+        movementAnimator.SetFloat("Move", 1f);
         pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
     void StopWander()
