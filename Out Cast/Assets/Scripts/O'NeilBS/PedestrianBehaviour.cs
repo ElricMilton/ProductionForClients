@@ -178,11 +178,11 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             agent.speed = 0;
             cowerTime -= 1 * Time.deltaTime;
-
             //play the cower animation here
         }
         else
         {
+            agent.speed = 1;
             cowerTime = startCowerTime;
             gameState = GameStates.patroling;
         }
