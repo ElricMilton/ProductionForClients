@@ -99,6 +99,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 break;
             case GameStates.searching:
                 //Debug.Log("We are in state searching!");
+                StopPatrol();
                 IsSearching();
                 break;
             case GameStates.returningToPost:
@@ -180,13 +181,12 @@ public class GuardBehaviourV2 : MonoBehaviour
         else
         {
             gameState = GameStates.patroling;
-           _OnPatrol?.Invoke();
         }
     }
 
     void IsSearching()
     {
-        if ((transform.position - playerPos.playerLastPos).magnitude > 0.5f)
+        if ((transform.position - playerPos.playerLastPos).magnitude > 1f)
         {
             transform.LookAt(playerPos.playerLastPos, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
@@ -209,7 +209,6 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             movementAnimator.Play("Movement");
             gameState = GameStates.returningToPost;
-            _OnReturnToPost?.Invoke();
             guardModle.transform.localRotation = Quaternion.identity;
             guardModle.transform.localPosition = new Vector3(0, 0, 0);
             searchTime = startSearchTime;
