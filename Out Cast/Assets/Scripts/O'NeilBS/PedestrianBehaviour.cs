@@ -39,6 +39,7 @@ public class PedestrianBehaviour : MonoBehaviour
         cowering,
     }
     GameStates gameState;
+
     void Start()
     {
         StartWander();
@@ -62,6 +63,7 @@ public class PedestrianBehaviour : MonoBehaviour
                 break;
             case GameStates.movingToCop:
                 Debug.Log("We are in state movingToCop!");
+                StopWander();
                 MoveToCop();
                 break;
             case GameStates.cowering:
@@ -150,17 +152,18 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void MoveToCop()
     {
-        var deteced = rangeSensor.GetNearest();
-        if (deteced != null)
+        var detected = rangeSensor.GetNearest();
+        if (detected != null && areCopsAlerted.Value == false)
         {
-            if ((transform.position - detected.transform.position).magnitude > 3f)
+            if ((transform.position - detected.transform.position).magnitude > 1.5f)
             {
                 agent.SetDestination(detected.transform.position);
+                agent.speed = runSpeed;
                 movementAnimator.SetFloat("Move", 2f);
             }
-            else
+            else if ((transform.position - detected.transform.position).magnitude < 1.5f)
             {
-                deteced.GetComponent<GuardBehaviourV2>().SearchStateTransition();
+                detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
                 gameState = GameStates.cowering;
             }
         }
@@ -173,7 +176,10 @@ public class PedestrianBehaviour : MonoBehaviour
     {
         if(cowerTime > 0)
         {
-        //play the cower animation here
+            agent.speed = 0;
+            cowerTime -= 1 * Time.deltaTime;
+
+            //play the cower animation here
         }
         else
         {

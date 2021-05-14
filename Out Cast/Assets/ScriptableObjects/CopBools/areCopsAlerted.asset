@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 362228a2ea909774fbe1e02ce88da513, type: 3}
-  m_Name: New Bool Variable
+  m_Name: areCopsAlerted
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  Value: 0
+  DeveloperDescription: 'have ANY of the cop npc''s been alerted
+
+    by pedestrians?'
+  Value: 1

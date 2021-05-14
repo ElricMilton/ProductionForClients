@@ -45,7 +45,7 @@ public class PedestrianWander : MonoBehaviour
             WanderRandomize();
             timer = wanderTimer;
         }
-        movementAnimator.SetFloat("Move", agent.velocity.magnitude);
+        //movementAnimator.SetFloat("Move", agent.velocity.magnitude);
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
