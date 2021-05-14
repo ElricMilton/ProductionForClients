@@ -30,7 +30,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float currentAnimationSpeed;
     [SerializeField] Animator animator;
     [SerializeField] Animator scaleAnimator;
-    //bool crouched = false;
+    [SerializeField] AnimatorOverrideController knockoutAnim;
 
     private void Start()
     {
@@ -38,9 +38,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         mouseVisible = false;
         controller = GetComponent<CharacterController>();
-        //animator = GetComponentInChildren<Animator>();
     }
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -56,22 +54,16 @@ public class ThirdPersonMovement : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 mouseVisible = false;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                print("hit space");
+                animator.Play("Knockout");
+            }
         }
 
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    scaleAnimator.Play("Shrink");
 
-        //    //crouched = true;
-        //    //currentSpeed = crouchSpeed;
-        //}
-        //if (Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    scaleAnimator.Play("Grow");
-
-        //    //crouched = false;
-        //    //currentSpeed = speed;
-        //}
+    
 
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
