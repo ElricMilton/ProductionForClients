@@ -68,6 +68,7 @@ public class PedestrianBehaviour : MonoBehaviour
                 MoveToCop();
                 break;
             case GameStates.cowering:
+                RunFrom();
                 Cower();
                 break;
             default:
@@ -97,9 +98,13 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopTransition()
     {
-        if (isPlayerChasable.Value == true)
+        if (isPlayerChasable.Value == true && chaseSatus.Value == true)
         {
             gameState = GameStates.movingToCop;
+        }
+        else if (isPlayerChasable.Value == true)
+        {
+            gameState = GameStates.cowering;
         }
     }
 
@@ -138,21 +143,16 @@ public class PedestrianBehaviour : MonoBehaviour
         }
     }
 
-    //void RunFrom(GameObject target)
-    //{
-    //    playerPos.playerLastPos = target.transform.position;
-    //    transform.LookAt(-target.transform.position);
-    //    if ((transform.position + target.transform.position).magnitude > 15f)
-    //    {
-    //        //transform.position += transform.forward * speed * Time.deltaTime;
-    //        agent.SetDestination(-target.transform.position);
-    //        movementAnimator.SetFloat("Move", 1f);
-    //    }
-    //    else
-    //    {
-    //        return;
-    //    }
-    //}
+    void RunFrom()
+    {
+        var detected = rangeSensor.GetNearest();
+        transform.LookAt(-detected.transform.position);
+        if ((transform.position + detected.transform.position).magnitude > 15f)
+        {
+            agent.SetDestination(-detected.transform.position);
+            movementAnimator.SetFloat("Move", 1f);
+        }
+    }
 
     void MoveToCop()
     {
@@ -167,6 +167,7 @@ public class PedestrianBehaviour : MonoBehaviour
             }
             else if ((transform.position - detected.transform.position).magnitude < 1.5f)
             {
+                agent.SetDestination(transform.position);
                 detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
                 gameState = GameStates.cowering;
             }
