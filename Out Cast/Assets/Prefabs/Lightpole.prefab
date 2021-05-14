@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228837308666573664}
   - component: {fileID: 3981421830830672483}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7772341646531795126}
   - component: {fileID: 7726665687446117844}
   - component: {fileID: 7726703451609292446}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lightpole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

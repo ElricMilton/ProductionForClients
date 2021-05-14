@@ -23,7 +23,7 @@ TagManager:
   - ParticleCollision
   - PostProcessing
   - NPC
-  - 
+  - CameraNoCollider
   - 
   - 
   - 

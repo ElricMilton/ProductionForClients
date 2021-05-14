@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3834186067796406393}
   - component: {fileID: 7185846036976995382}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: StreetLightLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3438748094782873002}
   - component: {fileID: 7428734702872828984}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8118942678760754328}
   - component: {fileID: 8091548558909201056}
   - component: {fileID: 8090955209706193674}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Streetlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
