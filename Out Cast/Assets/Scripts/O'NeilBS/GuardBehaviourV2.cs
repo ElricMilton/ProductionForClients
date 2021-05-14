@@ -175,6 +175,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
         if ((transform.position - target.transform.position).magnitude < 2f)
         {
+            agent.SetDestination(transform.position);
             movementAnimator.Play("Attack");
             gameOver.Invoke();
             movementAnimator.SetFloat("Move", 0f);
