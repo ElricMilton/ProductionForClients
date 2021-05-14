@@ -21,7 +21,6 @@ public class PedestrianBehaviour : MonoBehaviour
     public RangeSensor rangeSensor;
 
     //for searching state
-    public Waypoint post;
     public float runSpeed = 4f;
     public float EnemyDistanceRun = 4f;
 
@@ -39,7 +38,7 @@ public class PedestrianBehaviour : MonoBehaviour
     GameStates gameState;
     void Start()
     {
-        StartPatrol();
+        StartWander();
         gameState = GameStates.patroling;
         runTime = startRunTime;
     }
@@ -50,13 +49,12 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             case GameStates.patroling:
                 Debug.Log("We are in state patroling!");
-                StartPatrol();
+                StartWander();
                 break;
             case GameStates.running:
                 Debug.Log("We are in state running!");
-                StopPatrol();
+                StopWander();
                 Running();
-
                 break;
             case GameStates.movingToCop:
                 Debug.Log("We are in state movingToCop!");
@@ -83,14 +81,8 @@ public class PedestrianBehaviour : MonoBehaviour
         if (player != null & chaseSatus.Value == true)
         {
             playerPos.playerLastPos = player.transform.position;
-            runTime = startRunTime;
-            gameState = GameStates.running;
             Debug.Log("found you");
         }
-        //if (gameState == GameStates.running & player == null)
-        //{
-        //    gameState = GameStates.movingToCop;
-        //}
     }
 
     public void GetCopTransition()
@@ -121,7 +113,7 @@ public class PedestrianBehaviour : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        Debug.Log("distance" + distance);
+        //Debug.Log("distance" + distance);
 
         if(distance > EnemyDistanceRun)
         {
@@ -155,37 +147,29 @@ public class PedestrianBehaviour : MonoBehaviour
         var deteced = rangeSensor.GetNearest();
         if (deteced != null)
         {
-            if ((transform.position - deteced.transform.position).magnitude > 5f)
+            if ((transform.position - deteced.transform.position).magnitude > 3f)
             {
-
-                //transform.LookAt(post.transform, Vector3.up);
                 agent.SetDestination(deteced.transform.position);
-                //transform.position += transform.forward * speed * Time.deltaTime;
                 movementAnimator.SetFloat("Move", 0.5f);
+            }
+            else
+            {
+                deteced.GetComponent<GuardBehaviourV2>().SearchStateTransition();
+                gameState = GameStates.patroling;
             }
         }
 
-
-        else
-        {
-            gameState = GameStates.patroling;
-        }
     }
 
 
-    void StartPatrol()
+    void StartWander()
     {
         movementAnimator.SetFloat("Move", 0.5f);
-        pedestrian.GetComponent<PedestrianNavigationController>().enabled = true;
-        pedestrian.GetComponent<WaypointNavigator>().enabled = true;
-        pedestrian.GetComponent<NavMeshAgent>().enabled = false;
+        pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
-    void StopPatrol()
+    void StopWander()
     {
-        pedestrian.GetComponent<PedestrianNavigationController>().enabled = false;
-        pedestrian.GetComponent<WaypointNavigator>().enabled = false;
-        pedestrian.GetComponent<NavMeshAgent>().enabled = true;
+        pedestrian.GetComponent<PedestrianWander>().enabled = false;
     }
-
 
 }
