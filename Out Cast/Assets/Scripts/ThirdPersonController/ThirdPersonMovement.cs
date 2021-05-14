@@ -29,8 +29,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     float currentAnimationSpeed;
     [SerializeField] Animator animator;
-    [SerializeField] Animator scaleAnimator;
-    [SerializeField] AnimatorOverrideController knockoutAnim;
+
+    bool isDead = false;
 
     private void Start()
     {
@@ -55,23 +55,18 @@ public class ThirdPersonMovement : MonoBehaviour
                 mouseVisible = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                print("hit space");
-                animator.Play("Knockout");
-            }
         }
-
-
-    
-
+        
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (/*isGrounded &&*/ velocity.y < 0)
         {
             velocity.y = -5f;
         }
-        Move();
+        if (!isDead)
+        {
+            Move();
+        }
         //Jump();
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -118,4 +113,9 @@ public class ThirdPersonMovement : MonoBehaviour
     //        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     //    }
     //}
+    public void Die()
+    {
+        animator.Play("Knockout");
+        isDead = true;
+    }
 }

@@ -41,10 +41,14 @@ public class GuardBehaviourV2 : MonoBehaviour
     bool idle1Playing = false;
     bool idle2Playing = false;
 
+    public BoolVariable isAlerted;
+
     GameEvent _OnPatrol;
     GameEvent _OnChase;
     GameEvent _OnReturnToPost;
     GameEvent _OnSearching;
+
+    public GameEvent gameOver;
 
     public enum GameStates
     {
@@ -54,6 +58,10 @@ public class GuardBehaviourV2 : MonoBehaviour
         returningToPost,
     }
     GameStates gameState;
+    private void Awake()
+    {
+        isAlerted.Value = false;
+    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -167,6 +175,8 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
         if ((transform.position - target.transform.position).magnitude < 2f)
         {
+            movementAnimator.Play("Attack");
+            gameOver.Invoke();
             movementAnimator.SetFloat("Move", 0f);
         }
     }
@@ -186,6 +196,7 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     void IsSearching()
     {
+        isAlerted.Value = true;
         if ((transform.position - playerPos.playerLastPos).magnitude > 1f)
         {
             transform.LookAt(playerPos.playerLastPos, Vector3.up);

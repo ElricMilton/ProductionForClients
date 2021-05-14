@@ -340,6 +340,7 @@ MonoBehaviour:
   runTime: 0
   startRunTime: 0
   timerDecrease: 1
+  areCopsAlerted: {fileID: 11400000, guid: 56470b1187feeae48bec0dc63da2e08a, type: 2}
 --- !u!1001 &7187017184970438851
 PrefabInstance:
   m_ObjectHideFlags: 0

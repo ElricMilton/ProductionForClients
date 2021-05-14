@@ -29,6 +29,8 @@ public class PedestrianBehaviour : MonoBehaviour
     public float startRunTime;
     public float timerDecrease = 1f;
 
+    public BoolVariable areCopsAlerted;
+
     public enum GameStates
     {
         patroling,
@@ -144,17 +146,17 @@ public class PedestrianBehaviour : MonoBehaviour
     void MoveToCop()
     {
 
-        var deteced = rangeSensor.GetNearest();
-        if (deteced != null)
+        var detected = rangeSensor.GetNearest();
+        if (detected != null && areCopsAlerted.Value == false)
         {
-            if ((transform.position - deteced.transform.position).magnitude > 3f)
+            if ((transform.position - detected.transform.position).magnitude > 3f)
             {
-                agent.SetDestination(deteced.transform.position);
-                movementAnimator.SetFloat("Move", 0.5f);
+                agent.SetDestination(detected.transform.position);
+                movementAnimator.SetFloat("Move", 2f);
             }
             else
             {
-                deteced.GetComponent<GuardBehaviourV2>().SearchStateTransition();
+                detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
                 gameState = GameStates.patroling;
             }
         }
@@ -164,7 +166,7 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void StartWander()
     {
-        movementAnimator.SetFloat("Move", 0.5f);
+        movementAnimator.SetFloat("Move", 1f);
         pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
     void StopWander()
