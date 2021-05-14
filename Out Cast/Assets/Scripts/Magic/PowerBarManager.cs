@@ -15,6 +15,7 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] GameEvent powerDischarge;
     [SerializeField] float howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
+    [SerializeField] BoolVariable isPlayerChasable;
     [SerializeField] ParticleSystem uiDischargeFX;
 
     public void SetMaxPower(float power)
@@ -32,6 +33,7 @@ public class PowerBarManager : MonoBehaviour
 
     void Start()
     {
+        isPlayerChasable.Value = false;
         SetPower(0);
         SetMaxPower(maxPower);
         InvokeRepeating("GainPowerOverTime", 0.1f, 0.1f);
@@ -87,8 +89,8 @@ public class PowerBarManager : MonoBehaviour
     void OnBurst()
     {
         uiDischargeFX.Play();
+        StartCoroutine(DischargingMagic());
         powerDischarge?.Invoke();
-        StartCoroutine(DischargingMagic(howManySecondsToDischargeFor));
     }
 
     void GainPowerOverTime()
@@ -96,14 +98,14 @@ public class PowerBarManager : MonoBehaviour
         IncreasePower(powerIncreaseSpeed);
     }
 
-    public IEnumerator DischargingMagic(float dischargeForXSeconds)
+    IEnumerator DischargingMagic()
     {
+        isPlayerChasable.Value = true;
         uiDischargeFX.gameObject.SetActive(true);
         isDischargingMagicBool.Value = true;
-        print("player is discharging magic!");
-        yield return new WaitForSeconds(dischargeForXSeconds);
+        yield return new WaitForSeconds(howManySecondsToDischargeFor);
         uiDischargeFX.gameObject.SetActive(false);
         isDischargingMagicBool.Value = false;
-        print("player is no longer discharging magic");
+        isPlayerChasable.Value = true;
     }
 }

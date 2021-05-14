@@ -109,7 +109,7 @@ MonoBehaviour:
   NumberOfRays: 1
   MinimumVisibility: 0.5
   LineOfSightUpdateMode: 0
-  CheckLineOfSightInterval: 1
+  CheckLineOfSightInterval: 0.5
 --- !u!1 &7686522162673428906
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +313,7 @@ MonoBehaviour:
   playerPos: {fileID: 11400000, guid: 012e2137c918fe3438a3e06e531fe2cd, type: 2}
   agent: {fileID: 8519953321039761533}
   player: {fileID: 0}
+  isPlayerChasable: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
   pedestrian: {fileID: 7686522162673428906}
   fov: {fileID: 2513433620802965963}
   rangeSensor: {fileID: 2513433620448008163}

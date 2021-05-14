@@ -13,6 +13,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
     public GameObject player;
+    public BoolVariable isPlayerChasable;
 
     public GameObject pedestrian;
 
@@ -96,7 +97,10 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopTransition()
     {
-        gameState = GameStates.movingToCop;
+        if (isPlayerChasable.Value == true)
+        {
+            gameState = GameStates.movingToCop;
+        }
     }
 
     void Running()
