@@ -27,7 +27,7 @@ public class EndLevel : MonoBehaviour
         stoneSlideSFX.Play();
         yield return new WaitForSeconds(0.2f);
         endWallAnim.Play("SafeZoneReveal");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         endLevelEvent.Invoke();
 
     }
