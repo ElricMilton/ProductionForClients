@@ -14,6 +14,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
     public BoolVariable isPlayerChasable;
+    public BoolVariable isAlerted;
 
     public GameObject pedestrian;
 
