@@ -6,6 +6,7 @@ public class EndLevel : MonoBehaviour
 {
     [SerializeField] GameEvent endLevelEvent;
     GameObject player;
+    [SerializeField] Animator endWallAnim;
 
     private void Awake()
     {
@@ -15,12 +16,15 @@ public class EndLevel : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            End();
+            endWallAnim.Play("SafeZoneReveal");
+            StartCoroutine(End());
         }
     }
 
-    void End()
+    IEnumerator End()
     {
+
+        yield return new WaitForSeconds(3);
         endLevelEvent.Invoke();
 
     }
