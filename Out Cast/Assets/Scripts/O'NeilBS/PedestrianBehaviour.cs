@@ -14,6 +14,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
     public BoolVariable isPlayerChasable;
+    public BoolVariable isAlerted;
 
     public GameObject pedestrian;
 
@@ -59,8 +60,7 @@ public class PedestrianBehaviour : MonoBehaviour
                 break;
             case GameStates.running:
                 Debug.Log("We are in state running!");
-                StopWander();
-                Running();
+                RunFrom();
                 break;
             case GameStates.movingToCop:
                 Debug.Log("We are in state movingToCop!");
@@ -68,7 +68,7 @@ public class PedestrianBehaviour : MonoBehaviour
                 MoveToCop();
                 break;
             case GameStates.cowering:
-                RunFrom();
+                Debug.Log("Cowering");
                 Cower();
                 break;
             default:
@@ -147,10 +147,14 @@ public class PedestrianBehaviour : MonoBehaviour
     {
         var detected = rangeSensor.GetNearest();
         transform.LookAt(-detected.transform.position);
-        if ((transform.position + detected.transform.position).magnitude > 15f)
+        if ((transform.position + detected.transform.position).magnitude > 5f)
         {
             agent.SetDestination(-detected.transform.position);
             movementAnimator.SetFloat("Move", 1f);
+        }
+        else
+        {
+            gameState = GameStates.cowering;
         }
     }
 
@@ -169,7 +173,7 @@ public class PedestrianBehaviour : MonoBehaviour
             {
                 agent.SetDestination(transform.position);
                 detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
-                gameState = GameStates.cowering;
+                gameState = GameStates.running;
             }
         }
 

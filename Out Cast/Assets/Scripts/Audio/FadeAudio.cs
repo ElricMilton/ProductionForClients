@@ -11,7 +11,7 @@ public class FadeAudio : MonoBehaviour
     bool volumeUp = false;
     float timeStartedLerping;
     float lerpTime = 1.5f;
-    float startValue = 1;
+    float startValue = 0.9f;
     float endValue = 0.3f;
 
     private void OnEnable()
