@@ -7,6 +7,7 @@ public class EndLevel : MonoBehaviour
     [SerializeField] GameEvent endLevelEvent;
     GameObject player;
     [SerializeField] Animator endWallAnim;
+    [SerializeField] AudioSource stoneSlideSFX;
 
     private void Awake()
     {
@@ -16,14 +17,16 @@ public class EndLevel : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            endWallAnim.Play("SafeZoneReveal");
+            
             StartCoroutine(End());
         }
     }
 
     IEnumerator End()
     {
-
+        stoneSlideSFX.Play();
+        yield return new WaitForSeconds(0.2f);
+        endWallAnim.Play("SafeZoneReveal");
         yield return new WaitForSeconds(3);
         endLevelEvent.Invoke();
 
