@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &967287948925208443
+--- !u!1 &3752806169172609034
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3834186067796406393}
-  - component: {fileID: 7185846036976995382}
+  - component: {fileID: 6876705717627438807}
+  - component: {fileID: 7330676274502443614}
   m_Layer: 14
-  m_Name: StreetLightLight
+  m_Name: SpotLight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3834186067796406393
+--- !u!4 &6876705717627438807
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967287948925208443}
+  m_GameObject: {fileID: 3752806169172609034}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.49999854, w: 0.5000015}
-  m_LocalPosition: {x: -0.005001068, y: 6.143, z: 1.956}
+  m_LocalPosition: {x: -0.005, y: 6.15, z: 2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8118942678763074254}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &7185846036976995382
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &7330676274502443614
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967287948925208443}
+  m_GameObject: {fileID: 3752806169172609034}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3.63
-  m_Range: 7.2
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Intensity: 5
+  m_Range: 17.3
+  m_SpotAngle: 125
+  m_InnerSpotAngle: 75
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -141,7 +141,7 @@ Light:
   m_InnerSpotAngle: 75
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -174,7 +174,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -215,7 +215,7 @@ Transform:
   m_LocalPosition: {x: -35.509, y: 0.008030415, z: 55.64968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3834186067796406393}
+  - {fileID: 6876705717627438807}
   - {fileID: 3438748094782873002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
