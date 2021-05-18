@@ -101,6 +101,7 @@ MonoBehaviour:
   idleChatterClip1: {fileID: 8300000, guid: 0c4d69a742fa0a042bc18f09ee3ebdad, type: 3}
   idleChatterClip2: {fileID: 8300000, guid: 33401cf301106664a9924be0c0c5d774, type: 3}
   isAlerted: {fileID: 11400000, guid: 56470b1187feeae48bec0dc63da2e08a, type: 2}
+  onAlert: {fileID: 11400000, guid: 07b7b5d03d2c50e4bb4fe70d20135253, type: 2}
   gameOver: {fileID: 11400000, guid: 5b1d5e2eae8a4124c9297561d89aa0aa, type: 2}
 --- !u!195 &1875719765
 NavMeshAgent:

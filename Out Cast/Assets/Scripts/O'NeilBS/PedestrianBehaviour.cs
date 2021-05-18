@@ -32,6 +32,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public float timerDecrease = 1f;
 
     public BoolVariable areCopsAlerted;
+    public BoolVariable onAlert;
 
     public enum GameStates
     {
@@ -44,6 +45,15 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void Start()
     {
+        if(onAlert.Value == true)
+        {
+        onAlert.Value = false;
+        }
+        else
+        {
+            return;
+        }
+
         StartWander();
         gameState = GameStates.patroling;
         runTime = startRunTime;
@@ -98,8 +108,9 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopTransition()
     {
-        if (isPlayerChasable.Value == true && chaseSatus.Value == true)
+        if (isPlayerChasable.Value == true && chaseSatus.Value == true && onAlert.Value == false)
         {
+            onAlert.Value = true;
             gameState = GameStates.movingToCop;
         }
         else if (isPlayerChasable.Value == true)

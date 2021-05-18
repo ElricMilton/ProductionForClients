@@ -42,6 +42,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     bool idle2Playing = false;
 
     public BoolVariable isAlerted;
+    public BoolVariable onAlert;
 
     GameEvent _OnPatrol;
     GameEvent _OnChase;
@@ -106,6 +107,7 @@ public class GuardBehaviourV2 : MonoBehaviour
                 StopPatrol();
                 break;
             case GameStates.searching:
+                onAlert.Value = false;
                 //Debug.Log("We are in state searching!");
                 StopPatrol();
                 IsSearching();
