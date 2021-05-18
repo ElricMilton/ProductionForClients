@@ -9,23 +9,23 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] Image fill;
     [SerializeField] Gradient colourOverLife; //Set fixed colour gradient
-    [SerializeField] float maxPower = 100;
-    [SerializeField] float currentPower;
-    [SerializeField] float powerIncreaseSpeed;
+    [SerializeField] int maxPower = 100;
+    [SerializeField] int currentPower;
+    [SerializeField] int powerIncreaseSpeed;
     [SerializeField] GameEvent powerDischarge;
-    [SerializeField] float howManySecondsToDischargeFor;
+    [SerializeField] int howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
     [SerializeField] BoolVariable isPlayerChasable;
     [SerializeField] ParticleSystem uiDischargeFX;
 
-    public void SetMaxPower(float power)
+    public void SetMaxPower(int power)
     {
         slider.maxValue = power;
         //slider.value = power;
         fill.color = colourOverLife.Evaluate(1);
     }
 
-    public void SetPower(float power)
+    public void SetPower(int power)
     {
         slider.value = power;
         fill.color = colourOverLife.Evaluate(slider.normalizedValue);
@@ -52,7 +52,7 @@ public class PowerBarManager : MonoBehaviour
         }
     }
 
-    public void SpendPower(float powerAmount)
+    public void SpendPower(int powerAmount)
     {
         currentPower -= powerAmount;
         SetPower(currentPower);
@@ -69,7 +69,7 @@ public class PowerBarManager : MonoBehaviour
     }
 
     //Call this function to trigger power increase
-    public void IncreasePower(float powerAmount)
+    public void IncreasePower(int powerAmount)
     {
         currentPower += powerAmount;
         SetPower(currentPower);

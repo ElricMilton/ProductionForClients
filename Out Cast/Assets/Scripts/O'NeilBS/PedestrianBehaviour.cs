@@ -198,10 +198,12 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             agent.speed = 0;
             cowerTime -= 1 * Time.deltaTime;
-            //play the cower animation here
+            movementAnimator.Play("Cower");
         }
         else
         {
+            movementAnimator.SetTrigger("backToMove");
+            movementAnimator.SetFloat("Move", 1f);
             agent.speed = 1;
             cowerTime = startCowerTime;
             gameState = GameStates.patroling;
