@@ -3919,11 +3919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761769, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_Name
-      value: FriendlyNPC
+      value: FriendlyNPC (Terry)
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.055777
+      value: 48.574
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3931,7 +3931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -48.960434
+      value: -95.934
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3939,7 +3939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.04880633
+      value: -0.51879054
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3947,7 +3947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99880826
+      value: 0.8549014
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_RootOrder
@@ -3959,7 +3959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 5.595
+      value: -62.502
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4245,9 +4245,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.name
+      value: 'Terry :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "how you do\u2019in babe names Terry."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Dave told me bout said you needed hand gett\u2019in out of the city."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "said the mans harsh\u2019in on your vibe, No buena amiga."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: the safe zones in a building across the way from the park.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[4]
+      value: "you\u2019ll need to know this incantation to get in though let me teach
+        you, and you can be on your way."
+      objectReference: {fileID: 0}
     - target: {fileID: 4242017953415042864, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_text
-      value: Wait! I'm a caster too! Let me show you how to cast a spell.
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953415042864, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_fontSize
@@ -4256,6 +4285,26 @@ PrefabInstance:
     - target: {fileID: 4242017953415042864, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_fontSizeBase
       value: 20.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00026181
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.7263031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -3.452179
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -77.735306
       objectReference: {fileID: 0}
     - target: {fileID: 4255304528231664851, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4512,6 +4561,34 @@ PrefabInstance:
     - target: {fileID: 6609450531558207112, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.00000017025754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.1699982
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.989998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -7.8540955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -35.98222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6900175064832782476, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23244,41 +23321,109 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 595267433, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.44670156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0132045895
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.006593745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628685903096, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.89456135
+      objectReference: {fileID: 0}
     - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.4346864
+      value: 0.44660184
       objectReference: {fileID: 0}
     - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.014358079
+      value: 0.013194764
       objectReference: {fileID: 0}
     - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0069313403
+      value: -0.0065870006
       objectReference: {fileID: 0}
     - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.90044075
+      value: 0.89461124
       objectReference: {fileID: 0}
-    - target: {fileID: 5145613628898938299, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
+    - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05178079
       objectReference: {fileID: 0}
-    - target: {fileID: 5145613628898938301, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
-      propertyPath: m_Antialiasing
+    - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.7041025
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613628898938298, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.753595
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629203916276, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19272739
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629203916276, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.0377045
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629203916277, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_Orbits.Array.data[1].m_Radius
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629203916277, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_Heading.m_Definition
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.4046399
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.014673809
+      value: 0.013496781
       objectReference: {fileID: 0}
     - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0062623005
+      value: -0.0059728706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629460580215, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.914357
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145613629545794678, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
+      propertyPath: m_CenterOnActivate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630108963452, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.8
+      value: -35.34
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630108963452, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23286,7 +23431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630108963452, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.1
+      value: 90.01
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630108963452, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23326,19 +23471,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630130886933, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.42847914
+      value: 0.44043466
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630130886933, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.013812944
+      value: 0.012586605
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630130886933, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.006551263
+      value: -0.006175481
       objectReference: {fileID: 0}
     - target: {fileID: 5145613630130886933, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9034223
+      value: 0.89767516
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
@@ -28520,7 +28665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761769, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_Name
-      value: FriendlyNPC (2)
+      value: FriendlyNPC (HomelessDave)
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28855,6 +29000,10 @@ PrefabInstance:
       value: 114.8
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: Woah mate! Those coppers just storming into your house like that? Bloody
         bonkers!
@@ -28870,11 +29019,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: dialogue.name
-      value: Homeless Dave
+      value: 'Homeless Dave:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: "I\u2019d say it\u2019s time to leg it,"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[4]
+      value: "there are other like us out there they\u2019ll point you right way."
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953415042864, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_text
-      value: These cops suck!
+      value: Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.3899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -4.426193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -80.07554
       objectReference: {fileID: 0}
     - target: {fileID: 4255304528231664851, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -29131,6 +29308,34 @@ PrefabInstance:
     - target: {fileID: 6609450531558207112, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.00000017025754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00011218
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.027618408
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5.1505585
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -38.113705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6900175064832782476, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -32575,11 +32780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761769, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_Name
-      value: FriendlyNPC (1)
+      value: FriendlyNPC (Conner)
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.25
+      value: -16.311
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32587,7 +32792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.12
+      value: -45.192
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -32595,7 +32800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6454934
+      value: 0.8378518
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.z
@@ -32603,7 +32808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7637659
+      value: 0.5458978
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_RootOrder
@@ -32615,7 +32820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 80.405
+      value: 113.828
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -32910,20 +33115,63 @@ PrefabInstance:
       value: 114.8
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Hey! Homeless Dave told me about you...
+      value: "psst you\u2019re that caster Dave was talking about."
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: The caster safe zone is at the end of Main Street across from the park.
+      value: "I\u2019m apart of the Tubman society, we\u2019re non-casters that help
+        people like you get to safety."
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: You should leg it there before it gets late.
+      value: They helped my sister get to a safe state a while back, my name Conner
+        by the way.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.name
+      value: 'Conner:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: timeBetweenSentences
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: the safe zone is in a building off the main road across from the park
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[4]
+      value: "here they said that you need to recite what\u2019s on this paper to
+        get through to the safe zone."
       objectReference: {fileID: 0}
     - target: {fileID: 4242017953415042864, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_text
-      value: These cops suck!
+      value: Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.69000244
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5.483383
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -81.224045
       objectReference: {fileID: 0}
     - target: {fileID: 4255304528231664851, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33180,6 +33428,34 @@ PrefabInstance:
     - target: {fileID: 6609450531558207112, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.00000017025754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.12352753
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.720001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -7.109604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -39.021267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00015999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSize
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6900175064832782476, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
@@ -36009,7 +36285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761769, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_Name
-      value: FriendlyNPC
+      value: FriendlyNPC (SZK)
       objectReference: {fileID: 0}
     - target: {fileID: 1935712793943761774, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36331,6 +36607,51 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.14362575
       objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "You say you\u2019re a caster "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "if that\u2019s right preform the incantation in front of that wall
+        and it will open to the safe zone."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: "Once you do that your home free and I\u2019ll seal it behind you."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "Once you do that your home free and I\u2019ll seal it behind you."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953258090793, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: dialogue.name
+      value: 'Safe zone keeper: '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 36.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -14.317871
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242017953415042865, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -73.68927
+      objectReference: {fileID: 0}
     - target: {fileID: 4255304528231664851, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.6171445
@@ -36586,6 +36907,34 @@ PrefabInstance:
     - target: {fileID: 6609450531558207112, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.00000017025754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.6000061
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20.659996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -6.997528
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314492, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -41.312443
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839756863088314493, guid: 50012f0363a25754fa7661189e370909, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6900175064832782476, guid: 50012f0363a25754fa7661189e370909, type: 3}
       propertyPath: m_LocalRotation.x

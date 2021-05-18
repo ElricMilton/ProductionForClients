@@ -85,5 +85,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
         yield return new WaitForSeconds(timeBetweenSentences);
         DisplayNextSentence();
+        yield return new WaitForSeconds(timeBetweenSentences);
+        DisplayNextSentence();
+        yield return new WaitForSeconds(timeBetweenSentences);
+        DisplayNextSentence();
     }
 }
