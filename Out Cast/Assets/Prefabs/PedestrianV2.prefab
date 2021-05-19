@@ -326,7 +326,7 @@ MonoBehaviour:
   timerDecrease: 1
   areCopsAlerted: {fileID: 11400000, guid: 56470b1187feeae48bec0dc63da2e08a, type: 2}
   onAlert: {fileID: 11400000, guid: 07b7b5d03d2c50e4bb4fe70d20135253, type: 2}
-  overheadAlerts: {fileID: 212717398015878695}
+  overheadStates: {fileID: 212717398015878695}
   cowerTime: 0
   startCowerTime: 5
 --- !u!1001 &7187017184970438851
@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5701448044730443433, guid: 80ce795862796c44c9043963c1d0de2a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7347254892693424497, guid: 80ce795862796c44c9043963c1d0de2a, type: 3}
       propertyPath: m_Name
