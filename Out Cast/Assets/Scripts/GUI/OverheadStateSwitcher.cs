@@ -21,6 +21,7 @@ public class OverheadStateSwitcher : MonoBehaviour
         cowerImage.SetActive(false);
         searchingImage.SetActive(false);
         chasingImage.SetActive(false);
+        anim.Play("DialogueSpawn");
     }
     public void OverheadCowerState()
     {
@@ -28,6 +29,7 @@ public class OverheadStateSwitcher : MonoBehaviour
         alertImage.SetActive(false);
         searchingImage.SetActive(false);
         chasingImage.SetActive(false);
+        anim.Play("DialogueSpawn");
     }
     public void OverheadSearchingState()
     {
@@ -35,6 +37,7 @@ public class OverheadStateSwitcher : MonoBehaviour
         alertImage.SetActive(false);
         cowerImage.SetActive(false);
         chasingImage.SetActive(false);
+        anim.Play("DialogueSpawn");
     }
     public void OverheadChasingState()
     {
@@ -42,9 +45,17 @@ public class OverheadStateSwitcher : MonoBehaviour
         alertImage.SetActive(false);
         cowerImage.SetActive(false);
         searchingImage.SetActive(false);
+        anim.Play("DialogueSpawn");
     }
     public void HideStateOverheads()
     {
+        anim.Play("DialogueDespawn");
+    }
+
+    IEnumerator PlayAnimAfterX()
+    {
+        anim.Play("DialogueDespawn");
+        yield return new WaitForSeconds(0.2f);
         alertImage.SetActive(false);
         cowerImage.SetActive(false);
         searchingImage.SetActive(false);
