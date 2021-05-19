@@ -22,6 +22,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Road
     second: {fileID: 2100000, guid: 7654d69925d16e84391039f39b0ac35c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowEmission
+    second: {fileID: 2100000, guid: bdcaf67b2f14c2b4eb586d65c66245a8, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
