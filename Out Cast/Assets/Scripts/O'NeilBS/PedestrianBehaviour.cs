@@ -34,7 +34,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public BoolVariable areCopsAlerted;
     public BoolVariable onAlert;
 
-    public OverheadStateSwitcher overheadAlerts;
+    public OverheadStateSwitcher overheadStates;
 
     public enum GameStates
     {
@@ -164,7 +164,7 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             agent.SetDestination(-detected.transform.position);
             movementAnimator.SetFloat("Move", 1f);
-            overheadAlerts.OverheadCowerState();
+            overheadStates.OverheadCowerState();
         }
         else
         {
@@ -182,7 +182,7 @@ public class PedestrianBehaviour : MonoBehaviour
                 agent.SetDestination(detected.transform.position);
                 agent.speed = runSpeed;
                 movementAnimator.SetFloat("Move", 2f);
-                overheadAlerts.OverheadAlertState();
+                overheadStates.OverheadAlertState();
             }
             else if ((transform.position - detected.transform.position).magnitude < 1.5f)
             {
@@ -203,7 +203,7 @@ public class PedestrianBehaviour : MonoBehaviour
             agent.speed = 0;
             cowerTime -= 1 * Time.deltaTime;
             movementAnimator.Play("Cower");
-            overheadAlerts.OverheadCowerState();
+            overheadStates.OverheadCowerState();
         }
         else
         {
@@ -217,7 +217,7 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void StartWander()
     {
-        overheadAlerts.HideStateOverheads();
+        overheadStates.HideStateOverheads();
         movementAnimator.SetFloat("Move", 1f);
         pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
