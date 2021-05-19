@@ -51,6 +51,9 @@ public class GuardBehaviourV2 : MonoBehaviour
 
     public GameEvent gameOver;
 
+    public OverheadStateSwitcher overheadStates;
+    public AudioSource alertedSound;
+
     public enum GameStates
     {
         patroling,
@@ -174,6 +177,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
             movementAnimator.SetFloat("Move", 1f);
+            overheadStates.OverheadChasingState();
         }
         if ((transform.position - target.transform.position).magnitude < 2f)
         {
@@ -202,6 +206,8 @@ public class GuardBehaviourV2 : MonoBehaviour
         isAlerted.Value = true;
         if ((transform.position - playerPos.playerLastPos).magnitude > 1f)
         {
+            overheadStates.OverheadAlertState();
+            alertedSound.Play();
             transform.LookAt(playerPos.playerLastPos, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
         }
@@ -216,11 +222,13 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         if (searchTime >= 0)
         {
+            overheadStates.OverheadSearchingState();
             movementAnimator.Play("Searching");
             searchTime -= (timerDecrease * Time.deltaTime);
         }
         else
         {
+            overheadStates.HideStateOverheads();
             movementAnimator.Play("Movement");
             gameState = GameStates.returningToPost;
             guardModle.transform.localRotation = Quaternion.identity;
@@ -230,7 +238,8 @@ public class GuardBehaviourV2 : MonoBehaviour
     }
 
     public void StartPatrol()
-    { 
+    {
+        overheadStates.HideStateOverheads();
         movementAnimator.SetFloat("Move", 0.5f);
         guard.GetComponent<PedestrianNavigationController>().enabled = true;
         guard.GetComponent<WaypointNavigator>().enabled = true;
