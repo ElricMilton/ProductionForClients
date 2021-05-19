@@ -52,6 +52,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     public GameEvent gameOver;
 
     public OverheadStateSwitcher overheadStates;
+    public AudioSource alertedSound;
 
     public enum GameStates
     {
@@ -206,6 +207,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         if ((transform.position - playerPos.playerLastPos).magnitude > 1f)
         {
             overheadStates.OverheadAlertState();
+            alertedSound.Play();
             transform.LookAt(playerPos.playerLastPos, Vector3.up);
             transform.position += transform.forward * speed * Time.deltaTime;
         }

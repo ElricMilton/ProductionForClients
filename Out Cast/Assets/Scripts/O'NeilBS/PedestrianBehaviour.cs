@@ -35,6 +35,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public BoolVariable onAlert;
 
     public OverheadStateSwitcher overheadStates;
+    AudioSource alertSound;
 
     public enum GameStates
     {
@@ -47,6 +48,7 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void Start()
     {
+        alertSound = GetComponent<AudioSource>();
         if(onAlert.Value == true)
         {
         onAlert.Value = false;
@@ -114,6 +116,8 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             onAlert.Value = true;
             gameState = GameStates.movingToCop;
+            alertSound.Play();
+
         }
         else if (isPlayerChasable.Value == true)
         {
