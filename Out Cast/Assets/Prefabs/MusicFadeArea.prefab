@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b05c0dfc7549d4786d2831c66ccbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streetChatter: {fileID: 0}
+  powerBarSpeed: {fileID: 11400000, guid: 170dcb74dfd1a1747b3b861fc67e82db, type: 2}
