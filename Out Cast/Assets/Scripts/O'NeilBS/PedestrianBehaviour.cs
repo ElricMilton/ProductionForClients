@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using SensorToolkit;
-using System;
 
 public class PedestrianBehaviour : MonoBehaviour
 {
@@ -100,47 +99,18 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopTransition()
     {
-        if (isPlayerChasable.Value == true)
+        if (isPlayerChasable.Value == true && onAlert.Value == false)
         {
-            if(onAlert.Value == false)
-            {
-                GetCopCheck();
-            }
-        }       
-    }
-
-    //void GetCopCheck()
-    //{
-    //    if (isPlayerChasable.Value == true && onAlert.Value == false)
-    //    {
-    //        var player = fov.GetNearest();
-    //        playerPos.playerLastPos = player.transform.position;
-    //        onAlert.Value = true;
-    //        alertSound.Play();
-    //        gameState = GameStates.movingToCop;
-    //    }
-    //}
-
-    //public void CowerCheck()
-    //{
-    //    if (isPlayerChasable.Value == true && onAlert.Value == true)
-    //    {
-    //        gameState = GameStates.cowering;
-    //    }
-    //}
-
-    public void GetCopCheck()
-    {
-        var player = fov.GetNearest();
-        playerPos.playerLastPos = player.transform.position;
-        onAlert.Value = true;
-        alertSound.Play();
-        gameState = GameStates.movingToCop;
-    }
-
-    public void CowerCheck()
-    {
-        gameState = GameStates.cowering;
+            var player = fov.GetNearest();
+            playerPos.playerLastPos = player.transform.position;
+            onAlert.Value = true;
+            alertSound.Play();
+            gameState = GameStates.movingToCop;
+        }
+        else if (isPlayerChasable.Value == true && onAlert.Value == true)
+        {
+            gameState = GameStates.cowering;
+        }
     }
 
     void Running()
@@ -166,7 +136,6 @@ public class PedestrianBehaviour : MonoBehaviour
             agent.SetDestination(-detected.transform.position);
             movementAnimator.SetFloat("Move", 1f);
             overheadStates.OverheadCowerState();
-            onAlert.Value = false;
         }
         else
         {
@@ -200,8 +169,7 @@ public class PedestrianBehaviour : MonoBehaviour
     public float startCowerTime = 5f;
     void Cower()
     {
-        if (isPlayerChasable == false) return;
-        if (cowerTime > 0)
+        if(cowerTime > 0)
         {
             agent.speed = 0;
             cowerTime -= 1 * Time.deltaTime;
