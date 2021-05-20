@@ -6,6 +6,7 @@ public class FadeAudio : MonoBehaviour
 {
     AudioSource streetChatter;
     GameObject player;
+    public IntVariable powerBarSpeed;
 
     bool volumeDown = false;
     bool volumeUp = false;
@@ -37,6 +38,7 @@ public class FadeAudio : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            powerBarSpeed.Value = 0;
             volumeDown = true;
             volumeUp = false;
             StartLerping();
@@ -46,6 +48,7 @@ public class FadeAudio : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            powerBarSpeed.Value = 5;
             volumeUp = true;
             volumeDown = false;
             StartLerping();

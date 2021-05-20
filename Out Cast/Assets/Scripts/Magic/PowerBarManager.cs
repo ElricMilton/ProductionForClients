@@ -11,7 +11,7 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] Gradient colourOverLife; //Set fixed colour gradient
     [SerializeField] int maxPower = 100;
     [SerializeField] int currentPower;
-    [SerializeField] int powerIncreaseSpeed;
+    [SerializeField] IntVariable powerIncreaseSpeed;
     [SerializeField] GameEvent powerDischarge;
     [SerializeField] int howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
@@ -32,23 +32,11 @@ public class PowerBarManager : MonoBehaviour
 
     void Start()
     {
+        powerIncreaseSpeed.Value = 5;
         isPlayerChasable.Value = false;
         SetPower(0);
         SetMaxPower(maxPower);
         InvokeRepeating("GainPowerOverTime", 0.1f, 0.1f);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SpendPower(5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            IncreasePower(5);
-        }
     }
 
     public void SpendPower(int powerAmount)
@@ -93,7 +81,7 @@ public class PowerBarManager : MonoBehaviour
 
     void GainPowerOverTime()
     {
-        IncreasePower(powerIncreaseSpeed);
+        IncreasePower(powerIncreaseSpeed.Value);
     }
 
     IEnumerator DischargingMagic()
@@ -103,5 +91,14 @@ public class PowerBarManager : MonoBehaviour
         yield return new WaitForSeconds(howManySecondsToDischargeFor);
         isDischargingMagicBool.Value = false;
         isPlayerChasable.Value = true;
+    }
+
+    public void PausePowerIncrease()
+    {
+        powerIncreaseSpeed.Value = 0;
+    }
+    public void ResumePowerIncrease()
+    {
+        powerIncreaseSpeed.Value = 7;
     }
 }
