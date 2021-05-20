@@ -130,9 +130,9 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopCheck()
     {
-        var player = fov.GetNearest();
-        playerPos.playerLastPos = player.transform.position;
-        onAlert.Value = true;
+        //var player = fov.GetNearest();
+        //playerPos.playerLastPos = player.transform.position;
+        //onAlert.Value = true;
         alertSound.Play();
         gameState = GameStates.movingToCop;
     }
