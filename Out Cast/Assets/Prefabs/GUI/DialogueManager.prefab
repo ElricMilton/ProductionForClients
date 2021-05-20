@@ -713,11 +713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
       propertyPath: m_fontSize
-      value: 35
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
       propertyPath: m_fontSizeBase
-      value: 35
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
       propertyPath: m_text
@@ -730,6 +730,14 @@ PrefabInstance:
     - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 32972680027404741, guid: dd585746270436042bd4386d351211c8, type: 2}
+    - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
@@ -873,6 +881,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 32972680027404741, guid: dd585746270436042bd4386d351211c8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
 --- !u!1 &7118385319124806065 stripped
