@@ -99,18 +99,47 @@ public class PedestrianBehaviour : MonoBehaviour
 
     public void GetCopTransition()
     {
-        if (isPlayerChasable.Value == true && onAlert.Value == false)
+        if (isPlayerChasable.Value == true)
         {
-            var player = fov.GetNearest();
-            playerPos.playerLastPos = player.transform.position;
-            onAlert.Value = true;
-            alertSound.Play();
-            gameState = GameStates.movingToCop;
+            if (onAlert.Value == false)
+            {
+                GetCopCheck();
+            }
         }
-        else if (isPlayerChasable.Value == true && onAlert.Value == true)
-        {
-            gameState = GameStates.cowering;
-        }
+    }
+
+    //void GetCopCheck()
+    //{
+    //    if (isPlayerChasable.Value == true && onAlert.Value == false)
+    //    {
+    //        var player = fov.GetNearest();
+    //        playerPos.playerLastPos = player.transform.position;
+    //        onAlert.Value = true;
+    //        alertSound.Play();
+    //        gameState = GameStates.movingToCop;
+    //    }
+    //}
+
+    //public void CowerCheck()
+    //{
+    //    if (isPlayerChasable.Value == true && onAlert.Value == true)
+    //    {
+    //        gameState = GameStates.cowering;
+    //    }
+    //}
+
+    public void GetCopCheck()
+    {
+        var player = fov.GetNearest();
+        playerPos.playerLastPos = player.transform.position;
+        onAlert.Value = true;
+        alertSound.Play();
+        gameState = GameStates.movingToCop;
+    }
+
+    public void CowerCheck()
+    {
+        gameState = GameStates.cowering;
     }
 
     void Running()
@@ -136,6 +165,7 @@ public class PedestrianBehaviour : MonoBehaviour
             agent.SetDestination(-detected.transform.position);
             movementAnimator.SetFloat("Move", 1f);
             overheadStates.OverheadCowerState();
+            onAlert.Value = false;
         }
         else
         {
@@ -169,7 +199,8 @@ public class PedestrianBehaviour : MonoBehaviour
     public float startCowerTime = 5f;
     void Cower()
     {
-        if(cowerTime > 0)
+        if (isPlayerChasable == false) return;
+        if (cowerTime > 0)
         {
             agent.speed = 0;
             cowerTime -= 1 * Time.deltaTime;
