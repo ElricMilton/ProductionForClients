@@ -110,7 +110,6 @@ public class GuardBehaviourV2 : MonoBehaviour
                 StopPatrol();
                 break;
             case GameStates.searching:
-                onAlert.Value = false;
                 //Debug.Log("We are in state searching!");
                 StopPatrol();
                 IsSearching();
@@ -233,6 +232,7 @@ public class GuardBehaviourV2 : MonoBehaviour
             overheadStates.HideStateOverheads();
             movementAnimator.Play("Movement");
             gameState = GameStates.returningToPost;
+            onAlert.Value = false;
             guardModle.transform.localRotation = Quaternion.identity;
             guardModle.transform.localPosition = new Vector3(0, 0, 0);
             searchTime = startSearchTime;
