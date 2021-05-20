@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: IsChaseable
   m_EditorClassIdentifier: 
   DeveloperDescription: "Are the enemys able to chase \nthe player \n"
-  Value: 1
+  Value: 0

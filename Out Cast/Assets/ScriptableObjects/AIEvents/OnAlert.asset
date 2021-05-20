@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: OnAlert
   m_EditorClassIdentifier: 
   DeveloperDescription: "Are the NPC's alerted to the player being a \ncaster"
-  Value: 0
+  Value: 1

@@ -102,6 +102,6 @@ public class PowerBarManager : MonoBehaviour
         isDischargingMagicBool.Value = true;
         yield return new WaitForSeconds(howManySecondsToDischargeFor);
         isDischargingMagicBool.Value = false;
-        isPlayerChasable.Value = true;
+        isPlayerChasable.Value = false;
     }
 }
