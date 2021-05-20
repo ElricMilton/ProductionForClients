@@ -197,6 +197,7 @@ public class GuardBehaviourV2 : MonoBehaviour
         }
         else
         {
+            isAlerted.Value = false;
             gameState = GameStates.patroling;
         }
     }
@@ -208,8 +209,9 @@ public class GuardBehaviourV2 : MonoBehaviour
         {
             overheadStates.OverheadAlertState();
             alertedSound.Play();
-            transform.LookAt(playerPos.playerLastPos, Vector3.up);
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.LookAt(playerPos.playerLastPos, Vector3.up);
+            //transform.position += transform.forward * speed * Time.deltaTime;
+            agent.SetDestination(playerPos.playerLastPos);
         }
         else
         {
