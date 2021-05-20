@@ -3,258 +3,231 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using SensorToolkit;
+using System;
 
-public class GarudBehaviourV3 : MonoBehaviour
+public class PedestrianBehaviourv3 : MonoBehaviour
 {
-    public BoolVariable chaseSatus;
-
     public Animator movementAnimator;
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
+    public GameObject player;
+    public BoolVariable isPlayerChasable;
+    public BoolVariable isAlerted;
 
-    public GameObject guard;
+    public GameObject pedestrian;
 
     // public RangeSensor sensor;
     public TriggerSensor fov;
-    public Waypoint post;
-    public float chaseSpeed = 4f;
+    public RangeSensor rangeSensor;
 
     //for searching state
-    public float speed;
+    public float runSpeed = 4f;
+    public float EnemyDistanceRun = 4f;
+
+    //timer vars
+    public float runTime;
+    public float startRunTime;
     public float timerDecrease = 1f;
-    public GameObject patrolPoint;
 
-    //search timer vars
-    public float searchTime;
-    public float startSearchTime;
+    public BoolVariable areCopsAlerted;
+    public BoolVariable onAlert;
 
-    public AudioClip alertedClip;
-    public AudioClip returningToPostClip;
-    public AudioClip idleChatterClip1;
-    public AudioClip idleChatterClip2;
-    AudioSource audioSource;
-    bool alertPlaying = false;
-    bool returnPlaying = false;
-    bool idle1Playing = false;
-    bool idle2Playing = false;
-
-    GameEvent _OnPatrol;
-    GameEvent _OnChase;
-    GameEvent _OnReturnToPost;
-    GameEvent _OnSearching;
+    public OverheadStateSwitcher overheadStates;
+    AudioSource alertSound;
 
     public enum GameStates
     {
         patroling,
-        chasing,
-        searching,
-        returningToPost,
+        running,
+        movingToCop,
+        cowering,
     }
     GameStates gameState;
+
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        StartPatrol();
-        gameState = GameStates.patroling;
-        searchTime = startSearchTime;
-    }
-
-    void CheckDistance()
-    {
-        var player = fov.GetNearest();
-    }
-
-    void Update()
-    {
-
-
-        switch (gameState)
+        alertSound = GetComponent<AudioSource>();
+        if (onAlert.Value == true)
         {
-            case GameStates.patroling:
-                Debug.Log("We are in state patroling!");
-                alertPlaying = false;
-                returnPlaying = false;
-                idle2Playing = false;
-
-                if (!idle1Playing)
-                {
-                    audioSource.PlayOneShot(idleChatterClip1);
-                    idle1Playing = true;
-                }
-
-                StartPatrol();
-                break;
-            case GameStates.chasing:
-                Debug.Log("We are in state chasing!");
-                returnPlaying = false;
-                idle2Playing = false;
-                idle1Playing = false;
-
-                if (!alertPlaying)
-                {
-                    audioSource.PlayOneShot(alertedClip);
-                    alertPlaying = true;
-                }
-
-                Chasing();
-                StopPatrol();
-                break;
-            case GameStates.searching:
-                //Debug.Log("We are in state searching!");
-                IsSearching();
-                break;
-            case GameStates.returningToPost:
-                Debug.Log("We are in state returningToPost!");
-                idle2Playing = false;
-                idle1Playing = false;
-                alertPlaying = false;
-
-                if (!returnPlaying)
-                {
-                    audioSource.PlayOneShot(returningToPostClip);
-                    returnPlaying = true;
-                }
-                ReturnToPost();
-                break;
-            default:
-                break;
-        }
-
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    gameState = GameStates.patroling;
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    gameState = GameStates.chasing;
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    gameState = GameStates.searching;
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    gameState = GameStates.returningToPost;
-        //}
-
-
-
-        var player = fov.GetNearest();
-        if (player != null & chaseSatus.Value == true)
-        {
-            searchTime = startSearchTime;
-            gameState = GameStates.chasing;
-            _OnChase?.Invoke();
-        }
-
-        if (gameState == GameStates.chasing & player == null)
-        {
-            gameState = GameStates.searching;
-            _OnSearching?.Invoke();
-        }
-    }
-
-    public void PlaySFXOneShot(AudioClip clip)
-    {
-        audioSource.PlayOneShot(alertedClip);
-    }
-
-    public void PlayTransitionAnimation(string animStateName)
-    {
-        movementAnimator.Play(animStateName);
-    }
-
-    public void ChaseStateTransition()
-    {
-        gameState = GameStates.chasing;
-    }
-
-    public void Chasing()
-    {
-        var deteced = fov.GetNearest();
-        if (deteced != null)
-        {
-            Chase(deteced);
-        }
-    }
-
-    void Chase(GameObject target)
-    {
-        playerPos.playerLastPos = target.transform.position;
-        transform.LookAt(target.transform.position);
-        if ((transform.position - target.transform.position).magnitude > 2f)
-        {
-
-            //transform.position += transform.forward * speed * Time.deltaTime;
-            agent.SetDestination(target.transform.position);
-            movementAnimator.SetFloat("Move", 1f);
+            onAlert.Value = false;
         }
         else
         {
             return;
         }
+
+        StartWander();
+        gameState = GameStates.patroling;
+        runTime = startRunTime;
+        cowerTime = startCowerTime;
     }
 
-    void ReturnToPost()
+    void Update()
     {
-        if ((transform.position - post.transform.position).magnitude > 5f)
+        switch (gameState)
         {
-            //var speed = 4f;
+            case GameStates.patroling:
+                Debug.Log("We are in state patroling!");
+                StartWander();
+                break;
+            case GameStates.running:
+                Debug.Log("We are in state running!");
+                RunFrom();
+                break;
+            case GameStates.movingToCop:
+                Debug.Log("We are in state movingToCop!");
+                StopWander();
+                MoveToCop();
+                break;
+            case GameStates.cowering:
+                Debug.Log("Cowering");
+                Cower();
+                break;
+            default:
+                break;
+        }
+    }
+    public bool hasSeenPlayer = false;
+    //public void SeePlayer()
+    //{
+    //    hasSeenPlayer = true;
 
-            //transform.LookAt(post.transform, Vector3.up);
-            agent.SetDestination(post.transform.position);
-            //transform.position += transform.forward * speed * Time.deltaTime;
-            movementAnimator.SetFloat("Move", 0.5f);
+    //}
+    //public void DontSeePlayer()
+    //{
+    //    hasSeenPlayer = false;
+    //}
+
+    public void GetCopTransition()
+    {
+        if (isPlayerChasable.Value == true)
+        {
+            if (onAlert.Value == false)
+            {
+                GetCopCheck();
+            }
+        }
+    }
+
+    //void GetCopCheck()
+    //{
+    //    if (isPlayerChasable.Value == true && onAlert.Value == false)
+    //    {
+    //        var player = fov.GetNearest();
+    //        playerPos.playerLastPos = player.transform.position;
+    //        onAlert.Value = true;
+    //        alertSound.Play();
+    //        gameState = GameStates.movingToCop;
+    //    }
+    //}
+
+    //public void CowerCheck()
+    //{
+    //    if (isPlayerChasable.Value == true && onAlert.Value == true)
+    //    {
+    //        gameState = GameStates.cowering;
+    //    }
+    //}
+
+    public void GetCopCheck()
+    {
+        var player = fov.GetNearest();
+        playerPos.playerLastPos = player.transform.position;
+        onAlert.Value = true;
+        alertSound.Play();
+        gameState = GameStates.movingToCop;
+    }
+
+    public void CowerCheck()
+    {
+        gameState = GameStates.cowering;
+    }
+
+    void Running()
+    {
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distance > EnemyDistanceRun)
+        {
+            Vector3 dirToPlayer = transform.position - player.transform.position;
+
+            Vector3 newPos = transform.position + dirToPlayer;
+
+            agent.SetDestination(newPos);
+        }
+    }
+
+    void RunFrom()
+    {
+        var detected = rangeSensor.GetNearest();
+        transform.LookAt(-detected.transform.position);
+        if ((transform.position + detected.transform.position).magnitude > 5f)
+        {
+            agent.SetDestination(-detected.transform.position);
+            movementAnimator.SetFloat("Move", 1f);
+            overheadStates.OverheadCowerState();
+            onAlert.Value = false;
         }
         else
         {
+            gameState = GameStates.cowering;
+        }
+    }
+
+    void MoveToCop()
+    {
+        var detected = rangeSensor.GetNearest();
+        if (detected != null && areCopsAlerted.Value == false)
+        {
+            if ((transform.position - detected.transform.position).magnitude > 1.5f)
+            {
+                agent.SetDestination(detected.transform.position);
+                agent.speed = runSpeed;
+                movementAnimator.SetFloat("Move", 2f);
+                overheadStates.OverheadAlertState();
+            }
+            else if ((transform.position - detected.transform.position).magnitude < 1.5f)
+            {
+                agent.SetDestination(transform.position);
+                detected.GetComponent<GuardBehaviourV2>().SearchStateTransition();
+                gameState = GameStates.running;
+            }
+        }
+
+    }
+
+    public float cowerTime;
+    public float startCowerTime = 5f;
+    void Cower()
+    {
+        if (isPlayerChasable == false) return;
+        if (cowerTime > 0)
+        {
+            agent.speed = 0;
+            cowerTime -= 1 * Time.deltaTime;
+            movementAnimator.Play("Cower");
+            overheadStates.OverheadCowerState();
+        }
+        else
+        {
+            movementAnimator.SetTrigger("backToMove");
+            movementAnimator.SetFloat("Move", 1f);
+            agent.speed = 1;
+            cowerTime = startCowerTime;
             gameState = GameStates.patroling;
-            _OnPatrol?.Invoke();
         }
     }
 
-    void IsSearching()
+    void StartWander()
     {
-        if ((transform.position - playerPos.playerLastPos).magnitude > 0.5f)
-        {
-            transform.LookAt(playerPos.playerLastPos, Vector3.up);
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
-        else
-        {
-            Search();
-        }
-
+        overheadStates.HideStateOverheads();
+        movementAnimator.SetFloat("Move", 1f);
+        pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
-
-    void Search()
+    void StopWander()
     {
-
-        if (searchTime >= 0)
-        {
-            movementAnimator.Play("Searching");
-            searchTime -= (timerDecrease * Time.deltaTime);
-        }
-        else
-        {
-            movementAnimator.Play("Movement");
-            gameState = GameStates.returningToPost;
-            _OnReturnToPost?.Invoke();
-            searchTime = startSearchTime;
-        }
+        pedestrian.GetComponent<PedestrianWander>().enabled = false;
     }
 
-    void StartPatrol()
-    {
-        movementAnimator.SetFloat("Move", 0.5f);
-        guard.GetComponent<PedestrianNavigationController>().enabled = true;
-        guard.GetComponent<WaypointNavigator>().enabled = true;
-        guard.GetComponent<NavMeshAgent>().enabled = false;
-    }
-    void StopPatrol()
-    {
-        guard.GetComponent<PedestrianNavigationController>().enabled = false;
-        guard.GetComponent<WaypointNavigator>().enabled = false;
-        guard.GetComponent<NavMeshAgent>().enabled = true;
-    }
 }
+

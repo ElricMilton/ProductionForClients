@@ -86,6 +86,16 @@ public class PedestrianBehaviour : MonoBehaviour
                 break;
         }
     }
+    public bool hasSeenPlayer = false;
+    //public void SeePlayer()
+    //{
+    //    hasSeenPlayer = true;
+
+    //}
+    //public void DontSeePlayer()
+    //{
+    //    hasSeenPlayer = false;
+    //}
 
     public void GetCopTransition()
     {
