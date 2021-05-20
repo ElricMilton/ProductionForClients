@@ -6,9 +6,6 @@ using SensorToolkit;
 
 public class PedestrianBehaviour : MonoBehaviour
 {
-
-    public BoolVariable chaseSatus;
-
     public Animator movementAnimator;
     public PlayerStatus playerPos;
     public NavMeshAgent agent;
@@ -88,38 +85,19 @@ public class PedestrianBehaviour : MonoBehaviour
             default:
                 break;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameState = GameStates.patroling;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameState = GameStates.running;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gameState = GameStates.movingToCop;
-        }
-
-        var player = fov.GetNearest();
-        if (player != null & chaseSatus.Value == true)
-        {
-            playerPos.playerLastPos = player.transform.position;
-            Debug.Log("found you");
-        }
     }
 
     public void GetCopTransition()
     {
-        if (isPlayerChasable.Value == true && chaseSatus.Value == true && onAlert.Value == false)
+        if (isPlayerChasable.Value == true && onAlert.Value == false)
         {
+            var player = fov.GetNearest();
+            playerPos.playerLastPos = player.transform.position;
             onAlert.Value = true;
-            gameState = GameStates.movingToCop;
             alertSound.Play();
-
+            gameState = GameStates.movingToCop;
         }
-        else if (isPlayerChasable.Value == true)
+        else if (isPlayerChasable.Value == true && onAlert.Value == true)
         {
             gameState = GameStates.cowering;
         }
@@ -127,28 +105,7 @@ public class PedestrianBehaviour : MonoBehaviour
 
     void Running()
     {
-        //var deteced = rangeSensor.GetNearest();
-        //if (deteced.tag == "Player")
-        //{
-        //    RunFrom(deteced);
-        //}
-        //transform.LookAt(-player.transform.position);
-        //if ((transform.position - player.transform.position).magnitude < 15f)
-        //{
-        //    //transform.position += transform.forward * speed * Time.deltaTime;
-        //    var FromPlayer =  transform.position - player.transform.position;
-        //    agent.SetDestination(FromPlayer);
-        //    movementAnimator.SetFloat("Move", 1f);
-        //}
-        //else
-        //{
-        //    gameState = GameStates.movingToCop;
-        //}
-
-
         float distance = Vector3.Distance(transform.position, player.transform.position);
-
-        //Debug.Log("distance" + distance);
 
         if(distance > EnemyDistanceRun)
         {
