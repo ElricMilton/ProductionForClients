@@ -838,7 +838,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628685903094}
-  m_LocalRotation: {x: 0.43478668, y: 0.0143668875, z: -0.006937566, w: 0.9003921}
+  m_LocalRotation: {x: 0.45034364, y: 0.012832448, z: -0.0064733475, w: 0.89273965}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -914,8 +914,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628898938297}
-  m_LocalRotation: {x: 0.4346864, y: 0.014355727, z: -0.006930207, w: 0.9004408}
-  m_LocalPosition: {x: -0.19272739, y: 10.978049, z: -6.0377045}
+  m_LocalRotation: {x: 0.4502442, y: 0.012821037, z: -0.0064657936, w: 0.8927901}
+  m_LocalPosition: {x: -0.038259104, y: 5.171335, z: -1.3305479}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 595267435}
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613629460580213}
-  m_LocalRotation: {x: 0.39246696, y: 0.014673809, z: -0.0062623005, w: 0.9196278}
+  m_LocalRotation: {x: 0.40836272, y: 0.013119459, z: -0.005869901, w: 0.9127067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1458,13 +1458,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.9
+  m_Height: 1.6
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &5145613629577656907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,7 +1661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613630130886931}
-  m_LocalRotation: {x: 0.42848018, y: 0.013664911, z: -0.0064810533, w: 0.9034246}
+  m_LocalRotation: {x: 0.44409004, y: 0.012112945, z: -0.006004419, w: 0.8958801}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
