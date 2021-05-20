@@ -30,7 +30,7 @@ public class PowerBarManager : MonoBehaviour
         fill.color = colourOverLife.Evaluate(slider.normalizedValue);
     }
 
-    void Start()
+    void Awake()
     {
         powerIncreaseSpeed.Value = 5;
         isPlayerChasable.Value = false;
