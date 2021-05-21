@@ -320,7 +320,7 @@ MonoBehaviour:
   pedestrian: {fileID: 7686522162673428906}
   fov: {fileID: 2513433620802965963}
   rangeSensor: {fileID: 2513433620448008163}
-  runSpeed: 4
+  runSpeed: 3
   EnemyDistanceRun: 4
   runTime: 0
   startRunTime: 0
