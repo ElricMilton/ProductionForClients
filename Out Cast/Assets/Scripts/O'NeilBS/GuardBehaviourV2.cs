@@ -107,9 +107,9 @@ public class GuardBehaviourV2 : MonoBehaviour
                     audioSource.PlayOneShot(alertedClip);
                     alertPlaying = true;
                 }
-
-                Chasing();
                 StopPatrol();
+                Chasing();
+
                 break;
             case GameStates.searching:
                 //Debug.Log("We are in state searching!");
@@ -174,13 +174,13 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         playerPos.playerLastPos = target.transform.position;
         transform.LookAt(target.transform.position);
-        if ((transform.position - target.transform.position).magnitude > 2f)
+        if ((transform.position - target.transform.position).magnitude > 1f)
         {
             agent.SetDestination(target.transform.position);
             movementAnimator.SetFloat("Move", 1f);
             overheadStates.OverheadChasingState();
         }
-        if ((transform.position - target.transform.position).magnitude < 2f)
+        if ((transform.position - target.transform.position).magnitude < 1f)
         {
             agent.SetDestination(transform.position);
             movementAnimator.Play("Attack");
