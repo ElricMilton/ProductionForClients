@@ -164,7 +164,7 @@ public class GuardBehaviourV2 : MonoBehaviour
     public void Chasing()
     {
         var deteced = fov.GetNearest();
-        if (deteced != null)
+        if (deteced != null && chaseSatus.Value == true)
         {
             Chase(deteced);
         }
