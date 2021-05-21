@@ -16,6 +16,8 @@ public class PowerBarManager : MonoBehaviour
     [SerializeField] int howManySecondsToDischargeFor;
     [SerializeField] BoolVariable isDischargingMagicBool;
     [SerializeField] BoolVariable isPlayerChasable;
+    [SerializeField] ParticleSystem burstFX;
+    [SerializeField] Animator postProcAnim;
 
     public void SetMaxPower(int power)
     {
@@ -75,6 +77,8 @@ public class PowerBarManager : MonoBehaviour
 
     void OnBurst()
     {
+        burstFX.Play();
+        postProcAnim.Play("PostProcTestAnim");
         StartCoroutine(DischargingMagic());
         powerDischarge.Invoke();
     }

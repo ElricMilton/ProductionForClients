@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FadeAudio : MonoBehaviour
 {
-    AudioSource streetChatter;
-    GameObject player;
-    GameObject burstFX;
+    public AudioSource streetChatter;
+    public GameObject player;
+    public GameObject burstFX;
     //public IntVariable powerBarSpeed;
 
     bool volumeDown = false;
@@ -18,10 +18,9 @@ public class FadeAudio : MonoBehaviour
 
     private void Awake()
     {
-        streetChatter = GameObject.FindGameObjectWithTag("StreetChatterAudio").GetComponent<AudioSource>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        //streetChatter = GameObject.FindGameObjectWithTag("StreetChatterAudio").GetComponent<AudioSource>();
+        //player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<MeshRenderer>().enabled = false;
-        burstFX = GameObject.Find("Burst VFX");
     }
 
     private void Update()

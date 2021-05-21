@@ -3,7 +3,12 @@ guid: a9789634d4ba2144198abfeb3c4cb030
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shrinkSpellEvent: {fileID: 11400000, guid: d42a7b7d53d8d924593d075d562e1434, type: 2}
+  - shrinkFX: {instanceID: 0}
+  - growFX: {instanceID: 0}
+  - isPlayerChasable: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
+  - isDischargingMagicBool: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

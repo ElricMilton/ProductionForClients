@@ -9,7 +9,7 @@ public class ShrinkSpell : MonoBehaviour
     [SerializeField] ParticleSystem shrinkFX;
     [SerializeField] ParticleSystem growFX;
 
-    Animator anim;
+    public Animator anim;
     AudioManager audioManager;
 
     bool castable = true;
@@ -22,8 +22,9 @@ public class ShrinkSpell : MonoBehaviour
     public BoolVariable isDischargingMagicBool;
     void Start()
     {
+        
         audioManager = FindObjectOfType<AudioManager>();
-        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+       // anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     void Update()
