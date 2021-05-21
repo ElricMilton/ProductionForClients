@@ -5841,12 +5841,11 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   maxPower: 1000
   currentPower: 0
-  powerIncreaseSpeed: 7
+  powerIncreaseSpeed: {fileID: 11400000, guid: 170dcb74dfd1a1747b3b861fc67e82db, type: 2}
   powerDischarge: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
   howManySecondsToDischargeFor: 3
   isDischargingMagicBool: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
   isPlayerChasable: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
-  uiDischargeFX: {fileID: 4955500098858747777}
 --- !u!114 &922087022795362123
 MonoBehaviour:
   m_ObjectHideFlags: 0

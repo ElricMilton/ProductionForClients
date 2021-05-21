@@ -16,7 +16,7 @@ public class FadeAudio : MonoBehaviour
     float startValue = 0.9f;
     float endValue = 0.3f;
 
-    private void Start()
+    private void Awake()
     {
         streetChatter = GameObject.FindGameObjectWithTag("StreetChatterAudio").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,7 +40,7 @@ public class FadeAudio : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            burstFX.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            burstFX.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             //powerBarSpeed.Value = 0;
             volumeDown = true;
             volumeUp = false;
