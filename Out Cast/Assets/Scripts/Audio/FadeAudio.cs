@@ -6,7 +6,8 @@ public class FadeAudio : MonoBehaviour
 {
     AudioSource streetChatter;
     GameObject player;
-    public IntVariable powerBarSpeed;
+    GameObject burstFX;
+    //public IntVariable powerBarSpeed;
 
     bool volumeDown = false;
     bool volumeUp = false;
@@ -15,11 +16,12 @@ public class FadeAudio : MonoBehaviour
     float startValue = 0.9f;
     float endValue = 0.3f;
 
-    private void OnEnable()
+    private void Awake()
     {
         streetChatter = GameObject.FindGameObjectWithTag("StreetChatterAudio").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<MeshRenderer>().enabled = false;
+        burstFX = GameObject.Find("Burst VFX");
     }
 
     private void Update()
@@ -38,7 +40,8 @@ public class FadeAudio : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            powerBarSpeed.Value = 0;
+            burstFX.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            //powerBarSpeed.Value = 0;
             volumeDown = true;
             volumeUp = false;
             StartLerping();
@@ -48,7 +51,8 @@ public class FadeAudio : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            powerBarSpeed.Value = 5;
+            burstFX.transform.localScale = new Vector3(1f, 1f, 1f);
+            //powerBarSpeed.Value = 5;
             volumeUp = true;
             volumeDown = false;
             StartLerping();

@@ -8,7 +8,7 @@ public class HideableArea : MonoBehaviour
     [SerializeField] BoolVariable isDischarging;
     GameObject player;
 
-    private void OnEnable()
+    private void Start()
     {
         GetComponent<MeshRenderer>().enabled = false;
         player = GameObject.FindGameObjectWithTag("Player");

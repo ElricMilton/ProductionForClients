@@ -1,10 +1,9 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SensorToolkit;
 
-public class SetPedestrianState : MonoBehaviour
+public class ChangePedestrianStatus : MonoBehaviour
 {
     public RangeSensor rangeSensor;
 

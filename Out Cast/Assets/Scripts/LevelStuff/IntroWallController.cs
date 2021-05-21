@@ -19,7 +19,7 @@ public class IntroWallController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player && hasBeenTriggered == false)
+        if ((other.gameObject == player || other.gameObject.CompareTag("Cop")) && hasBeenTriggered == false)
         {
             anim.Play("StartWallSpawn");
             particles.Play();
