@@ -838,7 +838,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628685903094}
-  m_LocalRotation: {x: 0.45034364, y: 0.012832448, z: -0.0064733475, w: 0.89273965}
+  m_LocalRotation: {x: 0.009232767, y: 0.9003037, z: -0.43474412, w: 0.019119972}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -914,7 +914,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628898938297}
-  m_LocalRotation: {x: 0.00923629, y: 0.90035194, z: -0.43464366, w: 0.019132711}
+  m_LocalRotation: {x: 0.009236179, y: 0.90035194, z: -0.43464366, w: 0.019132482}
   m_LocalPosition: {x: -0.25646242, y: 10.978049, z: 6.0353284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613629203916274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19272739, y: 10.978049, z: -6.0377045}
+  m_LocalPosition: {x: -0.25646242, y: 10.978049, z: 6.0353284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5145613628685903096}
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613629460580213}
-  m_LocalRotation: {x: 0.40836272, y: 0.013119459, z: -0.005869901, w: 0.9127067}
+  m_LocalRotation: {x: 0.008334075, y: 0.9195374, z: -0.39242855, w: 0.01952838}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1411,7 +1411,6 @@ GameObject:
   - component: {fileID: 1551719529}
   - component: {fileID: 1551719530}
   - component: {fileID: 5549187216332050382}
-  - component: {fileID: 24142373}
   - component: {fileID: 1568953366075406972}
   - component: {fileID: 5042862507633740094}
   - component: {fileID: 7265045564962442319}
@@ -1533,22 +1532,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!208 &24142373
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5145613629577656905}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 0.95, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &1568953366075406972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1747,7 +1730,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613630130886931}
-  m_LocalRotation: {x: 0.009448382, y: 0.9033082, z: -0.42842516, w: 0.019921336}
+  m_LocalRotation: {x: 0.009441552, y: 0.9033086, z: -0.4284253, w: 0.019906932}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
