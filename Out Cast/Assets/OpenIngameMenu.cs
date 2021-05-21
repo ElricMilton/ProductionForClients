@@ -7,7 +7,8 @@ public class OpenIngameMenu : MonoBehaviour
 {
     private GameObject menuContainer;
 
-    public CinemachineBrain CMBrain;
+    public bool menuLock;
+    public CinemachineFreeLook CMCam;
 
     // Start is called before the first frame update
     void Start()
@@ -18,22 +19,36 @@ public class OpenIngameMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && menuContainer.activeSelf == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && !menuLock)
         {
             menuContainer.SetActive(true);
-            Time.timeScale = 0.0f;
-            CMBrain.enabled = false;
+            menuLock = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && menuContainer.activeSelf == true)
+        else if (Input.GetKeyDown(KeyCode.Escape) && menuLock)
         {
+            menuLock = false;
+            Cursor.lockState = CursorLockMode.Locked;
             menuContainer.SetActive(false);
-            Time.timeScale = 1.0f;
-            CMBrain.enabled = true;
         }
-        else
+        
+        if (menuLock)
         {
-            Time.timeScale = 1.0f;
-            CMBrain.enabled = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0.0f;
+            CMCam.m_XAxis.m_MaxSpeed = 0;
+            CMCam.m_YAxis.m_MaxSpeed = 0;
         }
+        else if (!menuLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1.0f;
+            CMCam.m_XAxis.m_MaxSpeed = 450;
+            CMCam.m_YAxis.m_MaxSpeed = 4;
+        }
+    }
+
+    public void menuLockToggle()
+    {
+        menuLock = false;
     }
 }
