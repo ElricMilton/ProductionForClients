@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4618cacc40bb10042ab05103602d6c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSatus: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
+  chaseSatus: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
   movementAnimator: {fileID: 7556537618120897904}
   playerPos: {fileID: 11400000, guid: 012e2137c918fe3438a3e06e531fe2cd, type: 2}
   agent: {fileID: 1875719765}
