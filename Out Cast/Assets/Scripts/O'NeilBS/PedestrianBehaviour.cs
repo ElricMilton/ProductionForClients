@@ -87,11 +87,12 @@ public class PedestrianBehaviour : MonoBehaviour
         }
     }
     public bool hasSeenPlayer = false;
-    //public void SeePlayer()
-    //{
-    //    hasSeenPlayer = true;
+    public void SeePlayer()
+    {
+        var player = fov.GetNearest();
+        playerPos.playerLastPos = player.transform.position;
 
-    //}
+    }
     //public void DontSeePlayer()
     //{
     //    hasSeenPlayer = false;

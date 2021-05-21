@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2513433620802965966
 Transform:
   m_ObjectHideFlags: 0
@@ -87,18 +87,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2513433620448008160}
         m_TargetAssemblyTypeName: PedestrianBehaviour, Assembly-CSharp
-        m_MethodName: GetCopTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2513433620448008160}
-        m_TargetAssemblyTypeName: PedestrianBehaviour, Assembly-CSharp
         m_MethodName: SeePlayer
         m_Mode: 1
         m_Arguments:
@@ -111,19 +99,7 @@ MonoBehaviour:
         m_CallState: 2
   OnLostDetection:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2513433620448008160}
-        m_TargetAssemblyTypeName: PedestrianBehaviour, Assembly-CSharp
-        m_MethodName: DontSeePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   DetectionMode: 1
   RequiresLineOfSight: 1
   BlocksLineOfSight:
@@ -338,7 +314,7 @@ MonoBehaviour:
   movementAnimator: {fileID: 7187017184963104163}
   playerPos: {fileID: 11400000, guid: 012e2137c918fe3438a3e06e531fe2cd, type: 2}
   agent: {fileID: 8519953321039761533}
-  player: {fileID: 0}
+  player: {fileID: 5145613630108963453, guid: 1c68cd2014562b04d87e7e7218fdda80, type: 3}
   isPlayerChasable: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
   isAlerted: {fileID: 11400000, guid: 07b7b5d03d2c50e4bb4fe70d20135253, type: 2}
   pedestrian: {fileID: 7686522162673428906}
