@@ -8,6 +8,7 @@ public class InputPrompts : MonoBehaviour
     [SerializeField] Animator anim;
     GameObject player;
 
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");

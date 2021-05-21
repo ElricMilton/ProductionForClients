@@ -178,6 +178,7 @@ MonoBehaviour:
     - Here's some more words
     - Now i'm finishing my dialogue.
   timeBetweenSentences: 3
+  powerBarSpeed: {fileID: 11400000, guid: 170dcb74dfd1a1747b3b861fc67e82db, type: 2}
 --- !u!1 &503430919725625688
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +886,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 32972680027404741, guid: dd585746270436042bd4386d351211c8, type: 2}
+    - target: {fileID: 4004290694703435565, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fec2a6388ac66429897be7dc88febe, type: 3}
 --- !u!1 &7118385319124806065 stripped

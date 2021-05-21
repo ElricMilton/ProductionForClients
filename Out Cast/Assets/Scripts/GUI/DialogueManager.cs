@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Dialogue dialogue;
     [SerializeField] float timeBetweenSentences = 2;
 
+    public IntVariable powerBarSpeed;
+
     private void Awake()
     {
         sentences = new Queue<string>();
@@ -27,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            powerBarSpeed.Value = 0;
             popup.SetActive(true);
             anim.Play("DialogueSpawn");
             StartDialogue();
@@ -37,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            powerBarSpeed.Value = 5;
             anim.Play("DialogueDespawn");
             StopCoroutine(SentenceTimer());
             StartCoroutine(DeactivateAfterX());
