@@ -72,6 +72,8 @@ public class GuardBehaviourV2 : MonoBehaviour
         StartPatrol();
         gameState = GameStates.patroling;
         searchTime = startSearchTime;
+        InvokeRepeating("PlayIdle1Audio", 20, 30);
+        InvokeRepeating("PlayIdle2Audio", 5, 30);
     }
 
     void Update()
@@ -263,5 +265,14 @@ public class GuardBehaviourV2 : MonoBehaviour
     {
         gameState = GameStates.searching;
     }
-
+    void PlayIdle1Audio()
+    {
+        audioSource.clip = idleChatterClip1;
+        audioSource.Play();
+    }
+    void PlayIdle2Audio()
+    {
+        audioSource.clip = idleChatterClip2;
+        audioSource.Play();
+    }
 }
