@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
 
     public void QuitGame()
     {
@@ -18,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public void GoToScene(string level)
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(level);
     }
 }

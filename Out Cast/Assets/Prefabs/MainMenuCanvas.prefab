@@ -2121,7 +2121,8 @@ PrefabInstance:
     - target: {fileID: 7897123155833412213, guid: 6f5250be2721efa448f7cc02d87c2854, type: 3}
       propertyPath: m_text
       value: One such Dark Magic user is The Dark Sorcerer who is said to be a descendant
-        of Satan and the first Dark Magic user and was cast away many years ago.
+        of Satan and the first Dark Magic user, though he was cast away many years
+        ago.
       objectReference: {fileID: 0}
     - target: {fileID: 7897123155833412213, guid: 6f5250be2721efa448f7cc02d87c2854, type: 3}
       propertyPath: m_fontAsset
