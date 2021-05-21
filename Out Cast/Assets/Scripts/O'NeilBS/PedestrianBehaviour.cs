@@ -139,7 +139,6 @@ public class PedestrianBehaviour : MonoBehaviour
         //var player = fov.GetNearest();
         //playerPos.playerLastPos = player.transform.position;
         //onAlert.Value = true;
-        alertSound.Play();
         gameState = GameStates.movingToCop;
     }
 
@@ -186,6 +185,7 @@ public class PedestrianBehaviour : MonoBehaviour
         {
             if ((transform.position - detected.transform.position).magnitude > 1.5f)
             {
+                alertSound.Play();
                 agent.SetDestination(detected.transform.position);
                 agent.speed = runSpeed;
                 movementAnimator.SetFloat("Move", 2f);
@@ -226,7 +226,7 @@ public class PedestrianBehaviour : MonoBehaviour
     void StartWander()
     {
         overheadStates.HideStateOverheads();
-        movementAnimator.SetFloat("Move", 1f);
+        movementAnimator.SetFloat("Move", Mathf.Clamp(agent.velocity.sqrMagnitude, 0.1f, 1.2f));
         pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
     void StopWander()

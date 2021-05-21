@@ -41,8 +41,8 @@ public class PedestrianWander : MonoBehaviour
         if (timer <= 0)
         {
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
             WanderRandomize();
+            agent.SetDestination(newPos);
             timer = wanderTimer;
         }
         //movementAnimator.SetFloat("Move", agent.velocity.magnitude);
