@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class ThirdPersonMovement : MonoBehaviour
@@ -117,5 +118,12 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         animator.Play("Knockout");
         isDead = true;
+        StartCoroutine(ReloadSceneAfterX());
+    }
+
+    IEnumerator ReloadSceneAfterX()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
     }
 }
