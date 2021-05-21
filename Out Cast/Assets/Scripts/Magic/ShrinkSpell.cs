@@ -18,6 +18,8 @@ public class ShrinkSpell : MonoBehaviour
     bool hasPressed = false;
     bool fullSize = true;
 
+    public BoolVariable isPlayerChasable;
+    public BoolVariable isDischargingMagicBool;
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -52,6 +54,7 @@ public class ShrinkSpell : MonoBehaviour
             anim.Play("Shrink");
             audioManager.Play("Shrink");
             StartCoroutine(ShrinkTime());
+            StartCoroutine(DischargingMagic());
         }
     }
     void Grow()
@@ -66,6 +69,7 @@ public class ShrinkSpell : MonoBehaviour
                 anim.Play("Grow");
                 StartCoroutine(Cooldown());
                 fullSize = true;
+                StartCoroutine(DischargingMagic());
             }
         }
         else if (castable)
@@ -87,7 +91,7 @@ public class ShrinkSpell : MonoBehaviour
 
     IEnumerator ShrinkTime()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.3f);
         shrinkSpellEvent.Invoke();
         shrinking = false;
     }
@@ -102,6 +106,15 @@ public class ShrinkSpell : MonoBehaviour
         StartCoroutine(Cooldown());
         delayGrowth = false;
         hasPressed = false;
+        StartCoroutine(DischargingMagic());
+    }
 
+    IEnumerator DischargingMagic()
+    {
+        isPlayerChasable.Value = true;
+        isDischargingMagicBool.Value = true;
+        yield return new WaitForSeconds(1.5f);
+        isDischargingMagicBool.Value = false;
+        isPlayerChasable.Value = true;
     }
 }

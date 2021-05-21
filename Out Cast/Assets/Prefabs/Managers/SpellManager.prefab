@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 3
   shrinkSpellEvent: {fileID: 11400000, guid: d42a7b7d53d8d924593d075d562e1434, type: 2}
+  shrinkFX: {fileID: 0}
+  growFX: {fileID: 0}
+  isPlayerChasable: {fileID: 11400000, guid: a964bc8424101c440900b8193c0301bf, type: 2}
+  isDischargingMagicBool: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
 --- !u!1 &8812025229249728102
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8812025229419148268
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +313,10 @@ PrefabInstance:
     - target: {fileID: 4621495699778579813, guid: c6ad4d61001d70049818ff19df42bc3d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407186861353077507, guid: c6ad4d61001d70049818ff19df42bc3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad4d61001d70049818ff19df42bc3d, type: 3}

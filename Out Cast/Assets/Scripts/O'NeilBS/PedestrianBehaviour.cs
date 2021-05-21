@@ -89,9 +89,11 @@ public class PedestrianBehaviour : MonoBehaviour
     public bool hasSeenPlayer = false;
     public void SeePlayer()
     {
+        if(gameState == GameStates.cowering)
+        {
         var player = fov.GetNearest();
         playerPos.playerLastPos = player.transform.position;
-
+        }
     }
     //public void DontSeePlayer()
     //{
