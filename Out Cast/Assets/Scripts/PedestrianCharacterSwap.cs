@@ -15,7 +15,7 @@ public class PedestrianCharacterSwap : MonoBehaviour
 
     void Start()
     {
-        characterValue = Random.Range(0, 5);
+        characterValue = Random.Range(0, 6);
     }
 
     private void Update()

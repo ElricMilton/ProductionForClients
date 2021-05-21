@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1311885815}
   - component: {fileID: 1311885816}
   - component: {fileID: 6645810404512542753}
+  - component: {fileID: 1069480548728560033}
   m_Layer: 13
   m_Name: CopV2
   m_TagString: Cop
@@ -286,6 +287,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1069480548728560033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629095971162466024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d4881a856d3ec47a12e4edc4084b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterValue: 0
+  character0: {fileID: 830334978122399546}
+  character1: {fileID: 6222490816348328896}
 --- !u!1 &1629095971323427427
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +908,16 @@ Transform:
 --- !u!95 &7556537618120897904 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: c61775622b4ab0a479f5ece6966345e4, type: 3}
+  m_PrefabInstance: {fileID: 4158127870842521825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &830334978122399546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5606609866926229541, guid: c61775622b4ab0a479f5ece6966345e4, type: 3}
+  m_PrefabInstance: {fileID: 4158127870842521825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6222490816348328896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8065411648542399265, guid: c61775622b4ab0a479f5ece6966345e4, type: 3}
   m_PrefabInstance: {fileID: 4158127870842521825}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2837564742054627976 stripped
