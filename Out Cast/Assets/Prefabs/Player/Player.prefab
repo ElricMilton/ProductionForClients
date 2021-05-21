@@ -303,12 +303,12 @@ GameObject:
   - component: {fileID: 595267437}
   - component: {fileID: 595267438}
   m_Layer: 0
-  m_Name: PostProcessingVolume
+  m_Name: PostProcessingVolume ExposureEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &595267435
 Transform:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 0
-  sharedProfile: {fileID: 11400000, guid: 5477b062081b3e24c95c3eeb182e1768, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7a5070906fcde944b8a1866cc76270da, type: 2}
 --- !u!114 &595267437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 5477b062081b3e24c95c3eeb182e1768, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a90828aa7dc46154cbe9a8636118d879, type: 2}
 --- !u!1 &5145613628608125185
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +838,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628685903094}
-  m_LocalRotation: {x: 0.009232767, y: 0.9003037, z: -0.43474412, w: 0.019119972}
+  m_LocalRotation: {x: 0.45034364, y: 0.012832448, z: -0.0064733475, w: 0.89273965}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -914,8 +914,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613628898938297}
-  m_LocalRotation: {x: 0.0102785025, y: 0.8926495, z: -0.45017326, w: 0.020381263}
-  m_LocalPosition: {x: -35.40072, y: 4.121335, z: 91.339714}
+  m_LocalRotation: {x: 0.4502442, y: 0.012821818, z: -0.0064661903, w: 0.89278996}
+  m_LocalPosition: {x: -0.038259104, y: 5.171335, z: -1.3305479}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 595267435}
@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613629203916274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25646242, y: 10.978049, z: 6.0353284}
+  m_LocalPosition: {x: -0.19272739, y: 10.978049, z: -6.0377045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5145613628685903096}
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613629460580213}
-  m_LocalRotation: {x: 0.008334077, y: 0.9195374, z: -0.39242855, w: 0.019528385}
+  m_LocalRotation: {x: 0.40836272, y: 0.013119459, z: -0.005869901, w: 0.9127067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 5145613628898938298}
-  speed: 6
+  speed: 5
   gravity: -9.81
   animator: {fileID: 726270116690007912}
 --- !u!54 &1551719529
@@ -1622,15 +1622,29 @@ MonoBehaviour:
   IgnoreList:
   - {fileID: 5145613630108963453}
   - {fileID: 1629095971162466024, guid: 59006145271e1674e93330335a91148d, type: 3}
-  EnableTagFilter: 0
-  AllowedTags: []
+  - {fileID: 1014437130508760369, guid: e5fd86e14cc796a4abe3abb40e7b2cfc, type: 3}
+  EnableTagFilter: 1
+  AllowedTags:
+  - Pedestrian
   OnDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5622802452337619678}
+        m_TargetAssemblyTypeName: ChangePedestrianStatus, Assembly-CSharp
+        m_MethodName: SetPedestrianCower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLostDetection:
     m_PersistentCalls:
       m_Calls: []
-  DetectionMode: 1
+  DetectionMode: 0
   RequiresLineOfSight: 0
   BlocksLineOfSight:
     serializedVersion: 2
@@ -1643,8 +1657,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   SensorUpdateMode: 0
-  CheckInterval: 1
-  InitialBufferSize: 20
+  CheckInterval: 0
+  InitialBufferSize: 40
   DynamicallyIncreaseBufferSize: 1
 --- !u!114 &6272738989930376279
 MonoBehaviour:
@@ -1661,19 +1675,7 @@ MonoBehaviour:
   gameEvent: {fileID: 11400000, guid: 0fa3d03ef59c0b541b91c01e256c77da, type: 2}
   unityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5622802452337619678}
-        m_TargetAssemblyTypeName: ChangePedestrianStatus, Assembly-CSharp
-        m_MethodName: SetPedestrianCower
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5622802452337619678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,6 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeSensor: {fileID: 7929784383633183825}
+  _isPlayerChasable: {fileID: 11400000, guid: 63e5c16ecb9e4854286188552350b30e, type: 2}
 --- !u!1 &5145613630108963453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5145613630130886931}
-  m_LocalRotation: {x: 0.009441553, y: 0.9033086, z: -0.42842534, w: 0.019906932}
+  m_LocalRotation: {x: 0.44408977, y: 0.012160523, z: -0.006028001, w: 0.89587957}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
