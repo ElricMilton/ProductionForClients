@@ -223,7 +223,7 @@ public class PedestrianBehaviour : MonoBehaviour
     void StartWander()
     {
         overheadStates.HideStateOverheads();
-        movementAnimator.SetFloat("Move", 1f);
+        movementAnimator.SetFloat("Move", Mathf.Clamp(agent.velocity.sqrMagnitude, 0.1f, 1.2f));
         pedestrian.GetComponent<PedestrianWander>().enabled = true;
     }
     void StopWander()
